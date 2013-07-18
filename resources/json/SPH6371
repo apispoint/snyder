@@ -1,0 +1,10 @@
+{
+"name" : "sph6371",
+"isSphere" : "true",
+"id" : "S1",
+"description" : "Sphere 6,371 km",
+"properties" : {
+"a" : 6371000.0, 
+"1/f" : 0.0
+}
+}

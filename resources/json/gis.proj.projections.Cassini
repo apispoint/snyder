@@ -1,0 +1,7 @@
+{
+"name":"gis.proj.projections.Cassini",
+"properties":{
+"lon0":"0",
+"lat0":"0"
+}
+}

@@ -1,0 +1,12 @@
+{
+"name":"gis.proj.projections.ModifiedStereographic",
+"properties":{
+"useLee":"1",
+"useGS48":"0",
+"useAlaska_S":"0",
+"useGS50_S":"0",
+"useMiller":"0",
+"useGS50_E":"0",
+"useAlaska_E":"0"
+}
+}
