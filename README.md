@@ -2,10 +2,6 @@ Snyder Projection Implementation
 
 Copyright (C) 2012, 2013  Jeremy J. Gibbons
 
-Email:
-
-    j.gibbons@acm.org
-
 References:
 
     Snyder, J. P. Map Projections--A Working Manual.
