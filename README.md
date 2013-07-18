@@ -1,4 +1,5 @@
 Snyder Projection Implementation
+================================
 
 Copyright (C) 2012, 2013  Jeremy J. Gibbons
 
@@ -15,12 +16,11 @@ SnyderVis data provided by:
     http://www.soest.hawaii.edu/pwessel/gshhg
     Extracted from version 2.2.3 on 1 July 2013
 
-REPO NOTES
-==========
+Notes
+=====
 
 The lib/ + resources/ directories are only required by the classes in the following package:
 
     gis.proj.drivers.*
 
-The driver classes are not required for deployment and should be used as a tutorial and usage reference
-for the library.  Since the package is not required for deployment, it is excluded in the build.xml.
+The driver classes are not required for deployment and are included as a reference for the library.
