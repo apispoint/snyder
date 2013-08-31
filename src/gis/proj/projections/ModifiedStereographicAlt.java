@@ -91,7 +91,7 @@ public final class ModifiedStereographicAlt implements Azimuthal {
         new ComplexNumber( 0.3660976, -0.2937382)
     };
 
-	private final static ComplexNumber[] GS48_S = new ComplexNumber[] {
+    private final static ComplexNumber[] GS48_S = new ComplexNumber[] {
         new ComplexNumber(39.0 * DEG_TO_RAD, -96.0 * DEG_TO_RAD),
         g0,
         new ComplexNumber( 0.98879,  0.0),
@@ -268,10 +268,10 @@ public final class ModifiedStereographicAlt implements Azimuthal {
         else if(datum.getProperty("useGS48")     == 1.0) consts = GS48_S;
         else if(datum.getProperty("useGS50_E")   == 1.0) consts = GS50_E;
 
-    	double lat1 = consts[0].re();
-    	double lon0 = consts[0].im();
+        double lat1 = consts[0].re();
+        double lon0 = consts[0].im();
 
-    	double x[] = new double[lon.length];
+        double x[] = new double[lon.length];
         double y[] = new double[lat.length];
 
         double hlf_e    = e * 0.5;
@@ -279,15 +279,15 @@ public final class ModifiedStereographicAlt implements Azimuthal {
 
         // (3-1)
         double chi1 = 2.0 *
-    			(
-    					StrictMath.atan(
-    							StrictMath.tan(PI_DIV_4 + lat1 * 0.5) *
-    							StrictMath.pow(
-    									(1.0 - esinlat1) /
-    									(1.0 + esinlat1),
-    									hlf_e)
-    							)
-    					) + N_PI_DIV_2;
+                (
+                        StrictMath.atan(
+                                StrictMath.tan(PI_DIV_4 + lat1 * 0.5) *
+                                StrictMath.pow(
+                                        (1.0 - esinlat1) /
+                                        (1.0 + esinlat1),
+                                        hlf_e)
+                                )
+                        ) + N_PI_DIV_2;
 
         double coschi1 = StrictMath.cos(chi1);
         double sinchi1 = StrictMath.sin(chi1);
@@ -304,52 +304,52 @@ public final class ModifiedStereographicAlt implements Azimuthal {
         ComplexNumber locPrime = new ComplexNumber();
 
         for(int i = 0; i < lon.length; ++i) {
-        	esinlat = e * StrictMath.sin(lat[i]);
+            esinlat = e * StrictMath.sin(lat[i]);
 
             // (3-1)
-        	chi = 2.0 *
-        			(
-        					StrictMath.atan(
-        							StrictMath.tan(PI_DIV_4 + lat[i] * 0.5) *
-        							StrictMath.pow(
-        									(1.0 - esinlat) /
-        									(1.0 + esinlat),
-        									hlf_e)
-        							)
-        					) + N_PI_DIV_2;
+            chi = 2.0 *
+                    (
+                            StrictMath.atan(
+                                    StrictMath.tan(PI_DIV_4 + lat[i] * 0.5) *
+                                    StrictMath.pow(
+                                            (1.0 - esinlat) /
+                                            (1.0 + esinlat),
+                                            hlf_e)
+                                    )
+                            ) + N_PI_DIV_2;
 
-        	coschi = StrictMath.cos(chi);
-        	sinchi = StrictMath.sin(chi);
+            coschi = StrictMath.cos(chi);
+            sinchi = StrictMath.sin(chi);
 
-        	lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
-        	coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
+            lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
+            coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
 
-        	s = 2.0 / (1.0 + sinchi1 * sinchi + coschi1 * coschi * coslon_M_lon0);
-        	locPrime.setReal(s * coschi * StrictMath.sin(lon_M_lon0));
-        	locPrime.setImaginary(s * (coschi1 * sinchi - sinchi1 * coschi * coslon_M_lon0));
+            s = 2.0 / (1.0 + sinchi1 * sinchi + coschi1 * coschi * coslon_M_lon0);
+            locPrime.setReal(s * coschi * StrictMath.sin(lon_M_lon0));
+            locPrime.setImaginary(s * (coschi1 * sinchi - sinchi1 * coschi * coslon_M_lon0));
 
-        	r = 2.0 * locPrime.re();
-    		sp = locPrime.absSq();
+            r = 2.0 * locPrime.re();
+            sp = locPrime.absSq();
 
-    		aM[0] = consts[m];
-    		bM[0] = consts[m - 1];
+            aM[0] = consts[m];
+            bM[0] = consts[m - 1];
 
-        	for(int j = 1; j < m; j++) {
-        		aM[j] = bM[j - 1].add(aM[j - 1].mul(r));
+            for(int j = 1; j < m; j++) {
+                aM[j] = bM[j - 1].add(aM[j - 1].mul(r));
 
-        		// In the last iteration these values are good because
-        		// g0 is in that position (usually 0.0)
-        		bM[j] = consts[m - 1 - j].sub(aM[j - 1].mul(sp));
-        	}
+                // In the last iteration these values are good because
+                // g0 is in that position (usually 0.0)
+                bM[j] = consts[m - 1 - j].sub(aM[j - 1].mul(sp));
+            }
 
-        	locPrime = locPrime.mul(aM[m - 2]).add(bM[m - 2]).mul(a);
-        	x[i] = locPrime.re();
-        	y[i] = locPrime.im();
+            locPrime = locPrime.mul(aM[m - 2]).add(bM[m - 2]).mul(a);
+            x[i] = locPrime.re();
+            y[i] = locPrime.im();
         }
 
         return new double[][] {x, y};
     }
- 
+
     public Set<String> getDatumProperties() {
         return new HashSet<String>(Arrays.asList(new String[]{
                 "useMiller",

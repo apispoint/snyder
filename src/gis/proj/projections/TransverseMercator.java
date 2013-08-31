@@ -41,13 +41,13 @@ import java.util.Set;
 
 public final class TransverseMercator implements Cylindrical {
 
-	private static final double ONE_6TH    = 1.0 / 6.0;
-	private static final double ONE_24TH   = 1.0 / 24.0;
-	private static final double ONE_120TH  = 1.0 / 120.0;
-	private static final double ONE_720TH  = 1.0 / 720.0;
-	private static final double THR_SCNDTH = 3.0 / 2.0;
+    private static final double ONE_6TH    = 1.0 / 6.0;
+    private static final double ONE_24TH   = 1.0 / 24.0;
+    private static final double ONE_120TH  = 1.0 / 120.0;
+    private static final double ONE_720TH  = 1.0 / 720.0;
+    private static final double THR_SCNDTH = 3.0 / 2.0;
 
-	public String getName() {
+    public String getName() {
         return "Transverse Mercator";
     }
 
@@ -87,7 +87,7 @@ public final class TransverseMercator implements Cylindrical {
         double C1, T1, N1, R1, D, M, mu, lat1, TWOT1, T1T1, DD, DDD, C1C1;
 
         for(int i = 0; i < lon.length; ++i) {
-        	M = M0 + y[i] / k0;
+            M = M0 + y[i] / k0;
             mu = M / MU_DIV;
 
             lat1  = mu + ((3.0/2.0) * E1 - (27.0 / 32.0)*(E1 * E1 * E1)) * StrictMath.sin(2.0 * mu);
@@ -111,19 +111,19 @@ public final class TransverseMercator implements Cylindrical {
             DD = D * D;
 
             if(NEAR_ZERO_RAD <= POLE_RAD - StrictMath.abs(lat[i])) {
-            	lon[i] = lon0 + (D - (1.0 + TWOT1 + C1) * ((DDD = DD * D) * ONE_6TH) +
-            			(5.0 - 2.0 * C1 + 28.0 * T1 - 3.0 * C1C1 + epsq8 + 24.0 * T1T1) *
-            			(DDD * DD * ONE_120TH)) / coslat1;
+                lon[i] = lon0 + (D - (1.0 + TWOT1 + C1) * ((DDD = DD * D) * ONE_6TH) +
+                        (5.0 - 2.0 * C1 + 28.0 * T1 - 3.0 * C1C1 + epsq8 + 24.0 * T1T1) *
+                        (DDD * DD * ONE_120TH)) / coslat1;
 
-            	lat[i] = lat1 - (N1 * tanlat1 / R1) * (
-            			DD * 0.5 - (5.0 + 3.0 * T1 + 10.0 * C1 - 4.0 * C1C1 + neg_epsq9) *
-            			(DDD * D * ONE_24TH) + (61.0 + 90.0 * T1 + 298.0 * C1 + 45.0 * T1T1 +
-            					neg_epsq252 - 3.0 * C1C1) * (DDD * DDD * ONE_720TH)
-            			);
+                lat[i] = lat1 - (N1 * tanlat1 / R1) * (
+                        DD * 0.5 - (5.0 + 3.0 * T1 + 10.0 * C1 - 4.0 * C1C1 + neg_epsq9) *
+                        (DDD * D * ONE_24TH) + (61.0 + 90.0 * T1 + 298.0 * C1 + 45.0 * T1T1 +
+                                neg_epsq252 - 3.0 * C1C1) * (DDD * DDD * ONE_720TH)
+                        );
             }
             else {
-            	x[i] = lon0;
-            	y[i] = y[i] < 0 ? N_PI_DIV_2 : PI_DIV_2;
+                x[i] = lon0;
+                y[i] = y[i] < 0 ? N_PI_DIV_2 : PI_DIV_2;
             }
         }
 
@@ -185,15 +185,15 @@ public final class TransverseMercator implements Cylindrical {
             AA = A * A;
 
             if(NEAR_ZERO_RAD <= POLE_RAD - StrictMath.abs(lat[i])) {
-            	x[i] = k0 * N * (
-            			A + (1.0 - T + C) * ((AAA = AA * A) * ONE_6TH) +
-            			(5.0 - 18.0 * T + TT + 72.0 * C + neg_epsq58) * (AAA * AA * ONE_120TH)
-            			);
-            	y[i] = k0 * (
-            			M - M0 + N * tanlat * (AA * 0.5 + (5.0 - T + 9.0 * C + 4.0 * C * C) *
-            			(AAA * A * ONE_24TH) + (61.0 - 58.0 * T + TT + 600.0 * C + neg_epsq330) *
-            			(AAA * AAA * ONE_720TH)) 
-            			);
+                x[i] = k0 * N * (
+                        A + (1.0 - T + C) * ((AAA = AA * A) * ONE_6TH) +
+                        (5.0 - 18.0 * T + TT + 72.0 * C + neg_epsq58) * (AAA * AA * ONE_120TH)
+                        );
+                y[i] = k0 * (
+                        M - M0 + N * tanlat * (AA * 0.5 + (5.0 - T + 9.0 * C + 4.0 * C * C) *
+                        (AAA * A * ONE_24TH) + (61.0 - 58.0 * T + TT + 600.0 * C + neg_epsq330) *
+                        (AAA * AAA * ONE_720TH)) 
+                        );
             }
             else {
                 x[i] = 0;

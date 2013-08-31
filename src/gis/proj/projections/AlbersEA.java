@@ -115,7 +115,7 @@ public final class AlbersEA implements Conic {
                 {
                     phi = PI_DIV_2 * q < 0 ? -1 : 1;
                 } else {
-                	phi = StrictMath.sin(q * 0.5);
+                    phi = StrictMath.sin(q * 0.5);
                     j = 0;
                     do {
                         sinphi = StrictMath.sin(phi);
@@ -191,9 +191,9 @@ public final class AlbersEA implements Conic {
             esinlat = e * sinlat;
 
             q = eNearZeroOrSphere == false ? one_M_esq * (
-            		sinlat / (1.0 - esq * sinlat * sinlat) - one_over_2e *
-            		StrictMath.log((1.0 - esinlat) / (1.0 + esinlat))
-            		) : 2.0 * sinlat;
+                    sinlat / (1.0 - esq * sinlat * sinlat) - one_over_2e *
+                    StrictMath.log((1.0 - esinlat) / (1.0 + esinlat))
+                    ) : 2.0 * sinlat;
 
             theta = nu * normalizeLonRad(lon[i] - lon0);
             rho = a * StrictMath.sqrt(C - nu * q) / nu;

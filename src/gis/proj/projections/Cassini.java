@@ -91,9 +91,9 @@ public final class Cassini implements Cylindrical {
                     (PI_DIV_2 - StrictMath.abs(lat1) < NEAR_ZERO_RAD && !(lat1 < 0.0 ^ y[i] < 0.0)) ||
                     (PI_DIV_2 - StrictMath.abs(lat[i]) < NEAR_ZERO_RAD && !(lat[i] < 0.0 ^ y[i] < 0.0))
                     )
-            	lon[i] = lon0;
+                lon[i] = lon0;
             else
-            	lon[i] = lon0 + (D - T1 * (D*D*D)/3.0 + (1.0 + 3.0 * T1) * T1 * (D*D*D*D*D) / 15.0) / StrictMath.cos(lat1);
+                lon[i] = lon0 + (D - T1 * (D*D*D)/3.0 + (1.0 + 3.0 * T1) * T1 * (D*D*D*D*D) / 15.0) / StrictMath.cos(lat1);
 
             lat[i] = lat1 - (N1 * StrictMath.tan(lat1) / R1) * (D*D *0.5 - (1.0 + 3.0 * T1) * (D*D*D*D) / 24.0);
         }
@@ -127,7 +127,7 @@ public final class Cassini implements Cylindrical {
         double coslat, sinlat, tanlat, M, N, T, A, C;
 
         for(int i = 0; i < lon.length; ++i) {
-        	M  = lat[i] * M_factor0;
+            M  = lat[i] * M_factor0;
             M -= StrictMath.sin(2.0 * lat[i]) * M_factor2;
             M += StrictMath.sin(4.0 * lat[i]) * M_factor4;
             M -= StrictMath.sin(6.0 * lat[i]) * M_factor6;
@@ -142,7 +142,7 @@ public final class Cassini implements Cylindrical {
             A = normalizeLonRad(lon[i] - lon0) * coslat;
             C = esq * (coslat * coslat) / one_M_esq;
 
-          	x[i] = N * (A - T * (A * A * A) / 6.0 - (8.0 - T + 8.0 * C) * T * (A * A * A * A * A) / 120.0);
+            x[i] = N * (A - T * (A * A * A) / 6.0 - (8.0 - T + 8.0 * C) * T * (A * A * A * A * A) / 120.0);
             y[i] = M - M0 + N * tanlat * (A * A * 0.5 + (5.0 - T + 6.0 * C) * (A * A * A * A) / 24.0);
         }
 

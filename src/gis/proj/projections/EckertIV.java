@@ -91,15 +91,15 @@ public final class EckertIV implements Pseudocylindrical, Spherical {
         double theta, dTheta, sinTheta, cosTheta, sinlat;
 
         for(int i = 0; i < lon.length; ++i) {
-        	sinlat = StrictMath.sin(lat[i]);
+            sinlat = StrictMath.sin(lat[i]);
             theta = lat[i] * 0.5;
             j = 0;
             do {
-            	cosTheta = StrictMath.cos(theta);
-            	sinTheta = StrictMath.sin(theta);
-            	theta +=
-            			dTheta = -(theta + sinTheta * cosTheta + 2.0 * sinTheta + NEG_TWO_P_HLF_PI * sinlat) /
-            			(2.0 * cosTheta * (1.0 + cosTheta));
+                cosTheta = StrictMath.cos(theta);
+                sinTheta = StrictMath.sin(theta);
+                theta +=
+                        dTheta = -(theta + sinTheta * cosTheta + 2.0 * sinTheta + NEG_TWO_P_HLF_PI * sinlat) /
+                        (2.0 * cosTheta * (1.0 + cosTheta));
             } while(++j < SERIES_EXPANSION_LIMIT && NEAR_ZERO_RAD < StrictMath.abs(dTheta));
 
             x[i] = x_factor_R * normalizeLonRad(lon[i] - lon0) * (1.0 + StrictMath.cos(theta));

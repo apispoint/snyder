@@ -79,49 +79,49 @@ public final class Polyconic implements Conic {
         int j;
 
         for(int i = 0; i < lon.length; ++i) {
-        	if(StrictMath.abs(y[i] - M0) < NEAR_ZERO_DEG) {
-        		lon[i] = normalizeLonRad(x[i] / a + lon0);
-        		lat[i] = 0.0;
-        	}
-        	else {
-        		A = (M0 + y[i]) / a;
-        		B = (x[i] * x[i]) / asq + (A * A);
+            if(StrictMath.abs(y[i] - M0) < NEAR_ZERO_DEG) {
+                lon[i] = normalizeLonRad(x[i] / a + lon0);
+                lat[i] = 0.0;
+            }
+            else {
+                A = (M0 + y[i]) / a;
+                B = (x[i] * x[i]) / asq + (A * A);
 
-        		phi = A;
-        		j = 0;
-        		do {
-        			phi_old = phi;
-        			sinphi = StrictMath.sin(phi);
-        			sin2phi = StrictMath.sin(2.0 * phi);
+                phi = A;
+                j = 0;
+                do {
+                    phi_old = phi;
+                    sinphi = StrictMath.sin(phi);
+                    sin2phi = StrictMath.sin(2.0 * phi);
 
-        			C = StrictMath.sqrt(1.0 - esq * sinphi * sinphi) * StrictMath.tan(phi);
+                    C = StrictMath.sqrt(1.0 - esq * sinphi * sinphi) * StrictMath.tan(phi);
 
-        			// Ma is not required because Mn is not multiplied by a
-        			// so there is no need to divide a
-        			//
-        			// However, once Maths.eq3_21 goes active then Ma will need to be
-        			// divided out
-        			Mn  = phi * M_factor0;
-        	        Mn -= StrictMath.sin(2.0 * phi) * M_factor2;
-        	        Mn += StrictMath.sin(4.0 * phi) * M_factor4;
-        	        Mn -= StrictMath.sin(6.0 * phi) * M_factor6;
+                    // Ma is not required because Mn is not multiplied by a
+                    // so there is no need to divide a
+                    //
+                    // However, once Maths.eq3_21 goes active then Ma will need to be
+                    // divided out
+                    Mn  = phi * M_factor0;
+                    Mn -= StrictMath.sin(2.0 * phi) * M_factor2;
+                    Mn += StrictMath.sin(4.0 * phi) * M_factor4;
+                    Mn -= StrictMath.sin(6.0 * phi) * M_factor6;
 
-        	        // eq 18-17
-        	        Mpn  = 1.0 - esq * 0.25 - esq * esq * (3.0 / 64.0) - esq * esq * esq * (5.0 / 256.0);
-        	        Mpn -= 2.0 * StrictMath.cos(2.0 * phi) * ((3.0 / 8.0) * esq + (3.0 / 32.0) * esq * esq + (45.0 / 1024.0 * esq * esq * esq));
-        	        Mpn += 4.0 * StrictMath.cos(4.0 * phi) * ((15.0 / 256.0) * esq * esq + (45.0 / 1024.0) * esq * esq * esq);
-        	        Mpn -= 6.0 * StrictMath.cos(6.0 * phi) * ((35.0 / 3072.0) * esq * esq * esq);
+                    // eq 18-17
+                    Mpn  = 1.0 - esq * 0.25 - esq * esq * (3.0 / 64.0) - esq * esq * esq * (5.0 / 256.0);
+                    Mpn -= 2.0 * StrictMath.cos(2.0 * phi) * ((3.0 / 8.0) * esq + (3.0 / 32.0) * esq * esq + (45.0 / 1024.0 * esq * esq * esq));
+                    Mpn += 4.0 * StrictMath.cos(4.0 * phi) * ((15.0 / 256.0) * esq * esq + (45.0 / 1024.0) * esq * esq * esq);
+                    Mpn -= 6.0 * StrictMath.cos(6.0 * phi) * ((35.0 / 3072.0) * esq * esq * esq);
 
-        	        phi = phi -
-        	        		(A * (C * Mn + 1.0) - Mn - 0.5 * (Mn * Mn + B) * C) /
-        	        		(esq * sin2phi * (Mn * Mn + B - 2.0 * A * Mn) / 4.0 *
-        	        				C + (A - Mn) * (C * Mpn - 2.0 / sin2phi) - Mpn);
+                    phi = phi -
+                            (A * (C * Mn + 1.0) - Mn - 0.5 * (Mn * Mn + B) * C) /
+                            (esq * sin2phi * (Mn * Mn + B - 2.0 * A * Mn) / 4.0 *
+                                    C + (A - Mn) * (C * Mpn - 2.0 / sin2phi) - Mpn);
 
-        		} while(++j < SERIES_EXPANSION_LIMIT && NEAR_ZERO_RAD < StrictMath.abs(phi - phi_old));
+                } while(++j < SERIES_EXPANSION_LIMIT && NEAR_ZERO_RAD < StrictMath.abs(phi - phi_old));
 
-        		lat[i] = phi;
-        		lon[i] = normalizeLonRad(StrictMath.asin(x[i] * C / a) / StrictMath.sin(phi) + lon0);
-        	}
+                lat[i] = phi;
+                lon[i] = normalizeLonRad(StrictMath.asin(x[i] * C / a) / StrictMath.sin(phi) + lon0);
+            }
         }
 
         return new double[][] {lon, lat};
@@ -164,11 +164,11 @@ public final class Polyconic implements Conic {
             forwardOk = StrictMath.abs(lon_M_lon0) < CUTOFF_LAT_DIST | ret;
 
             // To actually approach 90 degrees difference lon[i] - lon0 requires an almost exponential amount of
-        	// time to inverse project.  Going +/- 80 degrees allows the software to back project properly
-        	// within the 50 iterations defined for SERIES_EXPANSION_LIMIT
+            // time to inverse project.  Going +/- 80 degrees allows the software to back project properly
+            // within the 50 iterations defined for SERIES_EXPANSION_LIMIT
             if(forwardOk && StrictMath.abs(lat[i]) < NEAR_ZERO_RAD) {
-            	x[i] = a * lon_M_lon0;
-            	y[i] = -M0;
+                x[i] = a * lon_M_lon0;
+                y[i] = -M0;
             }
             else if(forwardOk) {
                 M  = lat[i] * M_factor0;
@@ -181,10 +181,10 @@ public final class Polyconic implements Conic {
                 cotlat = cot(lat[i]);
 
                 N = a / StrictMath.sqrt(1.0 - esq * sinlat * sinlat);
-            	E = lon_M_lon0 * sinlat;
+                E = lon_M_lon0 * sinlat;
 
-            	x[i] = N * cotlat * StrictMath.sin(E);
-            	y[i] = M - M0 + N * cotlat * (1.0 - StrictMath.cos(E));
+                x[i] = N * cotlat * StrictMath.sin(E);
+                y[i] = M - M0 + N * cotlat * (1.0 - StrictMath.cos(E));
             }
         }
 

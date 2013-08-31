@@ -252,8 +252,8 @@ public final class ObliqueMercator implements Cylindrical {
             lon0   = lonc - StrictMath.asin(G * StrictMath.tan(gamma0)) / B;
 
             u = StrictMath.copySign(
-            		A_over_B * StrictMath.atan2(StrictMath.sqrt(DD - 1.0),
-            		StrictMath.cos(alphac)), lat0);
+                    A_over_B * StrictMath.atan2(StrictMath.sqrt(DD - 1.0),
+                    StrictMath.cos(alphac)), lat0);
         }
 
         double cosgamma0 = StrictMath.cos(gamma0);
@@ -268,30 +268,30 @@ public final class ObliqueMercator implements Cylindrical {
         // TODO add special case checks as defined on pg 71 paragraph following Alternate A givens.
         //
         for(int i = 0; i < lon.length; ++i) {
-        	if(PI_DIV_2 - StrictMath.abs(lat[i]) < NEAR_ZERO_RAD) {
-        		v = A_over_B * StrictMath.log(StrictMath.tan(PI_DIV_4 + gamma0 * StrictMath.copySign(0.5, lat[i])));
-        		u = A * lat[i] / B;
-        	} else {
-            	lon_M_lon0 = lon[i] - lon0;
-            	esinlat = e * StrictMath.sin(lat[i]);
-            	cosBlon_M_lon0 = StrictMath.cos(B * lon_M_lon0);
+            if(PI_DIV_2 - StrictMath.abs(lat[i]) < NEAR_ZERO_RAD) {
+                v = A_over_B * StrictMath.log(StrictMath.tan(PI_DIV_4 + gamma0 * StrictMath.copySign(0.5, lat[i])));
+                u = A * lat[i] / B;
+            } else {
+                lon_M_lon0 = lon[i] - lon0;
+                esinlat = e * StrictMath.sin(lat[i]);
+                cosBlon_M_lon0 = StrictMath.cos(B * lon_M_lon0);
 
-            	t = StrictMath.tan(PI_DIV_4 - lat[i] * 0.5) / StrictMath.pow((1.0 - esinlat) / (1.0 + esinlat), hlf_e);
-        		Q = E / StrictMath.pow(t, B);
-        		S = (Q - 1.0 / Q) * 0.5;
-        		T = (Q + 1.0 / Q) * 0.5;
-        		V = StrictMath.sin(B * lon_M_lon0);
-        		U = (-V * cosgamma0 + S * singamma0) / T;
-        		v = A * StrictMath.log((1.0 - U) / (1.0 + U)) / B2;
+                t = StrictMath.tan(PI_DIV_4 - lat[i] * 0.5) / StrictMath.pow((1.0 - esinlat) / (1.0 + esinlat), hlf_e);
+                Q = E / StrictMath.pow(t, B);
+                S = (Q - 1.0 / Q) * 0.5;
+                T = (Q + 1.0 / Q) * 0.5;
+                V = StrictMath.sin(B * lon_M_lon0);
+                U = (-V * cosgamma0 + S * singamma0) / T;
+                v = A * StrictMath.log((1.0 - U) / (1.0 + U)) / B2;
 
-        		if(StrictMath.abs(cosBlon_M_lon0) < NEAR_ZERO_RAD)
-        			u = AB * lon_M_lon0;
-        		else
-        			u = A * StrictMath.atan2(S * cosgamma0 + V * singamma0, cosBlon_M_lon0) / B;
-        	}
+                if(StrictMath.abs(cosBlon_M_lon0) < NEAR_ZERO_RAD)
+                    u = AB * lon_M_lon0;
+                else
+                    u = A * StrictMath.atan2(S * cosgamma0 + V * singamma0, cosBlon_M_lon0) / B;
+            }
 
-        	x[i] = v * cosalphac + u * sinalphac + x0;
-        	y[i] = u * cosalphac - v * sinalphac + y0;
+            x[i] = v * cosalphac + u * sinalphac + x0;
+            y[i] = u * cosalphac - v * sinalphac + y0;
         }
 
         return new double[][] {x, y};

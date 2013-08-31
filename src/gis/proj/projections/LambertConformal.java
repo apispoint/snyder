@@ -55,7 +55,7 @@ public final class LambertConformal implements Conic {
         double lat1 = datum.getProperty("lat1");
         double lat2 = datum.getProperty("lat2");
 
-//        boolean useGeocentricLat = datum.getProperty("useGeocentricLat") == 1.0;
+        //        boolean useGeocentricLat = datum.getProperty("useGeocentricLat") == 1.0;
 
         double[] lon = new double[x.length];
         double[] lat = new double[y.length];
@@ -90,15 +90,15 @@ public final class LambertConformal implements Conic {
         double rho0 = aF * StrictMath.pow(t0, nu);
 
         for(int i = 0; i < lon.length; ++i) {
-        	rho = StrictMath.copySign(StrictMath.hypot(x[i], rho0 - y[i]), nu);
+            rho = StrictMath.copySign(StrictMath.hypot(x[i], rho0 - y[i]), nu);
 
-        	t = StrictMath.pow(rho / aF, inv_nu);
-        	theta = StrictMath.atan2(x[i] * nuFactor, rho0 * nuFactor - y[i] * nuFactor);
+            t = StrictMath.pow(rho / aF, inv_nu);
+            theta = StrictMath.atan2(x[i] * nuFactor, rho0 * nuFactor - y[i] * nuFactor);
 
-        	lon[i] = normalizeLonRad(theta / nu + lon0);
+            lon[i] = normalizeLonRad(theta / nu + lon0);
 
-        	phi = PI_DIV_2 - 2.0 * StrictMath.atan(t);
-        	j = 0;
+            phi = PI_DIV_2 - 2.0 * StrictMath.atan(t);
+            j = 0;
             do {
                 esinphi = e * StrictMath.sin(phi);
                 phi_old = phi;
@@ -121,7 +121,7 @@ public final class LambertConformal implements Conic {
         double lat1 = datum.getProperty("lat1");
         double lat2 = datum.getProperty("lat2");
 
-//        boolean useGeocentricLat = datum.getProperty("useGeocentricLat") == 1.0;
+        //        boolean useGeocentricLat = datum.getProperty("useGeocentricLat") == 1.0;
 
         double[] x = new double[lon.length];
         double[] y = new double[lat.length];
@@ -131,8 +131,8 @@ public final class LambertConformal implements Conic {
         double rho, theta, esinlat;
 
         //TODO undefined when it's a cylinder
-//        if(StrictMath.abs(POS_POLE_RADIANS - lat1) < NEAR_ZERO_RAD)
-//            lat1 -= NEAR_ZERO_RAD;
+        //        if(StrictMath.abs(POS_POLE_RADIANS - lat1) < NEAR_ZERO_RAD)
+        //            lat1 -= NEAR_ZERO_RAD;
 
         double sinlat,
         sinlat0 = StrictMath.sin(lat0),

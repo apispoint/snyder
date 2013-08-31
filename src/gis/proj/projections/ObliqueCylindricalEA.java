@@ -488,17 +488,17 @@ public final class ObliqueCylindricalEA implements Cylindrical {
 
     public Set<String> getDatumProperties() {
         return new HashSet<String>(Arrays.asList(new String[]{
-        		"h0",
-        		"lon1",
-        		"lat1",
-        		"lon2",
-        		"lat2",
-        		"lonz",
-        		"latz",
-        		"gamma",
-        		"lonp",
-        		"latp",
-        		"useCentralLine",
+                "h0",
+                "lon1",
+                "lat1",
+                "lon2",
+                "lat2",
+                "lonz",
+                "latz",
+                "gamma",
+                "lonp",
+                "latp",
+                "useCentralLine",
                 "useCentralPoint"}));
     }
 

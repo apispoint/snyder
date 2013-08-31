@@ -77,7 +77,7 @@ public final class BipolarObliqueConic implements Conic, Spherical {
 
     private static final double lonB, AzAB, AzBA, T, zc, latc, AzC, cosAzC, sinAzC, n, one_OVER_n;
 
-	public String getName() {
+    public String getName() {
         return "Bipolar Oblique Conic";
     }
 
@@ -99,11 +99,11 @@ public final class BipolarObliqueConic implements Conic, Spherical {
         int j;
 
         for(int i = 0; i < lon.length; ++i) {
-        	xp = -x[i] * cosAzC + y[i] * sinAzC;
-        	yp = -x[i] * sinAzC - y[i] * cosAzC;
+            xp = -x[i] * cosAzC + y[i] * sinAzC;
+            yp = -x[i] * sinAzC - y[i] * cosAzC;
 
-        	if(xp < 0.0) {
-        		// (17-45)
+            if(xp < 0.0) {
+                // (17-45)
                 rhoAp = StrictMath.hypot(xp, rhoc - yp);
                 AzAp  = StrictMath.atan2(xp, rhoc - yp);
 
@@ -126,41 +126,41 @@ public final class BipolarObliqueConic implements Conic, Spherical {
                 cosAzX = StrictMath.cos(AzA);
 
                 lon[i] =
-                		normalizeLonRad(StrictMath.atan2(
-                		StrictMath.sin(AzA),
-                		cos_N_020 / StrictMath.tan(ZA) - sin_N_020 * cosAzX) + D_N_110);
+                        normalizeLonRad(StrictMath.atan2(
+                        StrictMath.sin(AzA),
+                        cos_N_020 / StrictMath.tan(ZA) - sin_N_020 * cosAzX) + D_N_110);
 
                 lat[i] = StrictMath.asin(sin_N_020 * StrictMath.cos(ZA) + cos_P_020 * StrictMath.sin(ZA) * cosAzX);
-        	} else {
-        		// (17-36)
-        		rhoBp = StrictMath.hypot(xp, rhoc + yp);
-        		AzBp = StrictMath.atan2(xp, rhoc + yp);
+            } else {
+                // (17-36)
+                rhoBp = StrictMath.hypot(xp, rhoc + yp);
+                AzBp = StrictMath.atan2(xp, rhoc + yp);
 
-        		rhoB = rhoBp;
-        		j = 0;
-        		do {
-        			rhoX_old = rhoB;
-        			ZB = 2.0 * StrictMath.atan(StrictMath.pow(rhoB / F, one_OVER_n));
-        			alpha = StrictMath.acos(
-        					(StrictMath.pow(StrictMath.tan(0.5 * ZB), n) + StrictMath.pow(StrictMath.tan(0.5 * (D_P_104 - ZB)), n))
-        					/ T);
+                rhoB = rhoBp;
+                j = 0;
+                do {
+                    rhoX_old = rhoB;
+                    ZB = 2.0 * StrictMath.atan(StrictMath.pow(rhoB / F, one_OVER_n));
+                    alpha = StrictMath.acos(
+                            (StrictMath.pow(StrictMath.tan(0.5 * ZB), n) + StrictMath.pow(StrictMath.tan(0.5 * (D_P_104 - ZB)), n))
+                            / T);
 
-        			if(j == 0 && alpha < StrictMath.abs(AzBp))
+                    if(j == 0 && alpha < StrictMath.abs(AzBp))
                         break;
 
-            		rhoB = rhoBp * StrictMath.cos(alpha - AzBp);
-        		} while(++j < SERIES_EXPANSION_LIMIT && NEAR_ZERO_RAD < StrictMath.abs(rhoB - rhoX_old));
+                    rhoB = rhoBp * StrictMath.cos(alpha - AzBp);
+                } while(++j < SERIES_EXPANSION_LIMIT && NEAR_ZERO_RAD < StrictMath.abs(rhoB - rhoX_old));
 
-        		AzB = AzBA - AzBp / n;
-        		cosAzX = StrictMath.cos(AzB);
+                AzB = AzBA - AzBp / n;
+                cosAzX = StrictMath.cos(AzB);
 
-        		lon[i] =
-        				normalizeLonRad(lonB - StrictMath.atan2(
-                		StrictMath.sin(AzB),
-                		cos_P_045 / StrictMath.tan(ZB) - sin_P_045 * cosAzX));
+                lon[i] =
+                        normalizeLonRad(lonB - StrictMath.atan2(
+                        StrictMath.sin(AzB),
+                        cos_P_045 / StrictMath.tan(ZB) - sin_P_045 * cosAzX));
 
                 lat[i] = StrictMath.asin(sin_P_045 * StrictMath.cos(ZB) + cos_P_045 * StrictMath.sin(ZB) * cosAzX);
-        	}
+            }
         }
 
         return new double[][] {lon, lat};
@@ -183,64 +183,64 @@ public final class BipolarObliqueConic implements Conic, Spherical {
         double coslat, sinlat, tanlat, lon_110, coslon_110;
 
         for(int i = 0; i < lon.length; ++i) {
-        	lonB_M_lon = normalizeLonRad(lonB - lon[i]);
-        	coslonB_M_lon = StrictMath.cos(lonB_M_lon);
+            lonB_M_lon = normalizeLonRad(lonB - lon[i]);
+            coslonB_M_lon = StrictMath.cos(lonB_M_lon);
 
-        	coslat = StrictMath.cos(lat[i]);
-        	sinlat = StrictMath.sin(lat[i]);
-        	tanlat = StrictMath.tan(lat[i]);
+            coslat = StrictMath.cos(lat[i]);
+            sinlat = StrictMath.sin(lat[i]);
+            tanlat = StrictMath.tan(lat[i]);
 
-        	ZB = StrictMath.acos(sin_P_045 * sinlat + cos_P_045 * coslat * coslonB_M_lon);
+            ZB = StrictMath.acos(sin_P_045 * sinlat + cos_P_045 * coslat * coslonB_M_lon);
 
-        	AzB = StrictMath.atan2(
-        			StrictMath.sin(lonB_M_lon) ,
-        			(cos_P_045 * tanlat - sin_P_045 * coslonB_M_lon));
+            AzB = StrictMath.atan2(
+                    StrictMath.sin(lonB_M_lon) ,
+                    (cos_P_045 * tanlat - sin_P_045 * coslonB_M_lon));
 
             if(AzB > AzBA) {
-            	// (17-23)
-            	lon_110 = lon[i] + D_P_110;
-            	coslon_110 = StrictMath.cos(lon_110);
+                // (17-23)
+                lon_110 = lon[i] + D_P_110;
+                coslon_110 = StrictMath.cos(lon_110);
 
-            	ZA = StrictMath.acos(sin_N_020 * sinlat + cos_N_020 * coslat * coslon_110);
+                ZA = StrictMath.acos(sin_N_020 * sinlat + cos_N_020 * coslat * coslon_110);
 
-            	AzA = StrictMath.atan2(
-            			StrictMath.sin(lon_110),
-            			cos_N_020 * tanlat - sin_N_020 * coslon_110
-            			);
+                AzA = StrictMath.atan2(
+                        StrictMath.sin(lon_110),
+                        cos_N_020 * tanlat - sin_N_020 * coslon_110
+                        );
 
-            	tan_half_ZX_pown       = StrictMath.pow(StrictMath.tan(0.5 * ZA), n);
-            	tan_half_104_M_ZX_pown = StrictMath.pow(StrictMath.tan(0.5 * (D_P_104 - ZA)), n);
+                tan_half_ZX_pown       = StrictMath.pow(StrictMath.tan(0.5 * ZA), n);
+                tan_half_104_M_ZX_pown = StrictMath.pow(StrictMath.tan(0.5 * (D_P_104 - ZA)), n);
 
-            	rhoA  = F * tan_half_ZX_pown;
-            	alpha = StrictMath.acos((tan_half_ZX_pown + tan_half_104_M_ZX_pown) / T);
+                rhoA  = F * tan_half_ZX_pown;
+                alpha = StrictMath.acos((tan_half_ZX_pown + tan_half_104_M_ZX_pown) / T);
 
-            	rhoAp = rhoA;
+                rhoAp = rhoA;
 
-            	n_AzXX_M_AzX = n * (AzAB - AzA);
+                n_AzXX_M_AzX = n * (AzAB - AzA);
 
-            	if(StrictMath.abs(n_AzXX_M_AzX) < alpha)
-            		rhoAp = rhoA / StrictMath.cos(alpha + n_AzXX_M_AzX);
+                if(StrictMath.abs(n_AzXX_M_AzX) < alpha)
+                    rhoAp = rhoA / StrictMath.cos(alpha + n_AzXX_M_AzX);
 
-            	xp =  rhoAp * StrictMath.sin(n_AzXX_M_AzX);
-            	yp = -rhoAp * StrictMath.cos(n_AzXX_M_AzX) + rhoc;
+                xp =  rhoAp * StrictMath.sin(n_AzXX_M_AzX);
+                yp = -rhoAp * StrictMath.cos(n_AzXX_M_AzX) + rhoc;
             }
             else {
-            	// (17-16)
-            	tan_half_ZX_pown       = StrictMath.pow(StrictMath.tan(0.5 * ZB), n);
-            	tan_half_104_M_ZX_pown = StrictMath.pow(StrictMath.tan(0.5 * (D_P_104 - ZB)), n);
+                // (17-16)
+                tan_half_ZX_pown       = StrictMath.pow(StrictMath.tan(0.5 * ZB), n);
+                tan_half_104_M_ZX_pown = StrictMath.pow(StrictMath.tan(0.5 * (D_P_104 - ZB)), n);
 
-            	rhoB = F * tan_half_ZX_pown;
-            	alpha = StrictMath.acos((tan_half_ZX_pown + tan_half_104_M_ZX_pown) / T);
+                rhoB = F * tan_half_ZX_pown;
+                alpha = StrictMath.acos((tan_half_ZX_pown + tan_half_104_M_ZX_pown) / T);
 
-            	rhoBp = rhoB;
+                rhoBp = rhoB;
 
-            	n_AzXX_M_AzX = n * (AzBA - AzB);
+                n_AzXX_M_AzX = n * (AzBA - AzB);
 
-            	if(StrictMath.abs(n_AzXX_M_AzX) < alpha)
-            		rhoBp = rhoB / StrictMath.cos(alpha - n_AzXX_M_AzX);
+                if(StrictMath.abs(n_AzXX_M_AzX) < alpha)
+                    rhoBp = rhoB / StrictMath.cos(alpha - n_AzXX_M_AzX);
 
-            	xp = rhoBp * StrictMath.sin(n_AzXX_M_AzX);
-            	yp = rhoBp * StrictMath.cos(n_AzXX_M_AzX) - rhoc;
+                xp = rhoBp * StrictMath.sin(n_AzXX_M_AzX);
+                yp = rhoBp * StrictMath.cos(n_AzXX_M_AzX) - rhoc;
             }
 
             x[i] = -xp * cosAzC - yp * sinAzC;
@@ -251,37 +251,37 @@ public final class BipolarObliqueConic implements Conic, Spherical {
     }
 
     public Set<String> getDatumProperties() {
-    	return Collections.emptySet();
+        return Collections.emptySet();
     }
- 
+
     static {
-    	lonB =
-        		normalizeLonRad(D_N_110 + StrictMath.acos(
-        		(cos_P_104 - sin_N_020 * sin_P_045) / (cos_N_020 * cos_P_045)
-        		));
+        lonB =
+                normalizeLonRad(D_N_110 + StrictMath.acos(
+                (cos_P_104 - sin_N_020 * sin_P_045) / (cos_N_020 * cos_P_045)
+                ));
 
         n = 
-        		(StrictMath.log(sin_P_031) - StrictMath.log(sin_P_073)) /
-        		(StrictMath.log(tan_P_031H) - StrictMath.log(tan_P_073H));
+            (StrictMath.log(sin_P_031) - StrictMath.log(sin_P_073)) /
+            (StrictMath.log(tan_P_031H) - StrictMath.log(tan_P_073H));
 
-    	double cos_lonb_P_D_P_110 = StrictMath.cos(normalizeLonRad(lonB + D_P_110));
+        double cos_lonb_P_D_P_110 = StrictMath.cos(normalizeLonRad(lonB + D_P_110));
 
         AzAB = StrictMath.acos(
-        		(
-        				cos_N_020 * sin_P_045 -
-        				sin_N_020 * cos_P_045 * cos_lonb_P_D_P_110
-        		) / sin_P_104
-        		);
+                (
+                        cos_N_020 * sin_P_045 -
+                        sin_N_020 * cos_P_045 * cos_lonb_P_D_P_110
+                ) / sin_P_104
+                );
 
         AzBA = StrictMath.acos(
-        		(
-        				cos_P_045 * sin_N_020 -
-        				sin_P_045 * cos_N_020 * cos_lonb_P_D_P_110
-        		) / sin_P_104
-        		);
+                (
+                        cos_P_045 * sin_N_020 -
+                        sin_P_045 * cos_N_020 * cos_lonb_P_D_P_110
+                ) / sin_P_104
+                );
 
         T    = 
-        		(tan_P_031H_pown = StrictMath.pow(tan_P_031H, n)) + StrictMath.pow(tan_P_073H, n);
+                (tan_P_031H_pown = StrictMath.pow(tan_P_031H, n)) + StrictMath.pow(tan_P_073H, n);
 
         zc   = 2.0 * StrictMath.atan(StrictMath.pow(T * 0.5, 1.0 / n));
 

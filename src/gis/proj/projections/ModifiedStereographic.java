@@ -46,41 +46,41 @@ public final class ModifiedStereographic implements Azimuthal {
     // [1][] >> {lon0, g0, B1, .., Bm}
     //
 
-	// Miller lat1, lon0 taken from 1994 reprint & corrections
-	private final static double[][] MILLER_S = new double [][] {
-		{18.0 * DEG_TO_RAD, 0.0, 0.924500, 0.0, 0.019430},
-		{18.0 * DEG_TO_RAD, 0.0, 0.0     , 0.0, 0.0     }
-	};
+    // Miller lat1, lon0 taken from 1994 reprint & corrections
+    private final static double[][] MILLER_S = new double [][] {
+        {18.0 * DEG_TO_RAD, 0.0, 0.924500, 0.0, 0.019430},
+        {18.0 * DEG_TO_RAD, 0.0, 0.0     , 0.0, 0.0     }
+    };
 
-	private final static double[][] LEE_S = new double [][] {
-		{-010.0 * DEG_TO_RAD, 0.0, 0.721316, 0.0, -0.00881625},
-		{-165.0 * DEG_TO_RAD, 0.0, 0.0     , 0.0, -0.00617325}
-	};
+    private final static double[][] LEE_S = new double [][] {
+        {-010.0 * DEG_TO_RAD, 0.0, 0.721316, 0.0, -0.00881625},
+        {-165.0 * DEG_TO_RAD, 0.0, 0.0     , 0.0, -0.00617325}
+    };
 
-	private final static double[][] GS50_S = new double [][] {
-		{  45.0 * DEG_TO_RAD, 0.0, 0.9842990, 0.0211642, -0.1036018, -0.0329095, 0.0499471, 0.0260460,  0.0007388,  0.0075848, -0.0216473, -0.0225161},
-		{-120.0 * DEG_TO_RAD, 0.0, 0.0      , 0.0037608, -0.0575102, -0.0320119, 0.1223335, 0.0899805, -0.1435792, -0.1334108,  0.0776645,  0.0853673}
-	};
+    private final static double[][] GS50_S = new double [][] {
+        {  45.0 * DEG_TO_RAD, 0.0, 0.9842990, 0.0211642, -0.1036018, -0.0329095, 0.0499471, 0.0260460,  0.0007388,  0.0075848, -0.0216473, -0.0225161},
+        {-120.0 * DEG_TO_RAD, 0.0, 0.0      , 0.0037608, -0.0575102, -0.0320119, 0.1223335, 0.0899805, -0.1435792, -0.1334108,  0.0776645,  0.0853673}
+    };
 
-	private final static double[][] ALASKA_S = new double [][] {
-		{  64.0 * DEG_TO_RAD, 0.0, 0.9972523,  0.0052513, 0.0074606, -0.0153783,  0.0636871,  0.3660976},
-		{-152.0 * DEG_TO_RAD, 0.0, 0.0      , -0.0041175, 0.0048125, -0.1968253, -0.1408027, -0.2937382}
-	};
+    private final static double[][] ALASKA_S = new double [][] {
+        {  64.0 * DEG_TO_RAD, 0.0, 0.9972523,  0.0052513, 0.0074606, -0.0153783,  0.0636871,  0.3660976},
+        {-152.0 * DEG_TO_RAD, 0.0, 0.0      , -0.0041175, 0.0048125, -0.1968253, -0.1408027, -0.2937382}
+    };
 
-	private final static double[][] GS48_S = new double [][] {
-		{ 39.0 * DEG_TO_RAD, 0.0, 0.98879, 0.0, -0.050909, 0.0, 0.075528},
-		{-96.0 * DEG_TO_RAD, 0.0, 0.0    , 0.0,  0.0     , 0.0, 0.0     }
-	};
+    private final static double[][] GS48_S = new double [][] {
+        { 39.0 * DEG_TO_RAD, 0.0, 0.98879, 0.0, -0.050909, 0.0, 0.075528},
+        {-96.0 * DEG_TO_RAD, 0.0, 0.0    , 0.0,  0.0     , 0.0, 0.0     }
+    };
 
-	private final static double[][] GS50_E = new double [][] {
-		{  45.0 * DEG_TO_RAD, 0.0, 0.9827497, 0.0210669, -0.1031415, -0.0323337, 0.0502303, 0.0251805, -0.0012315,  0.0072202, -0.0194029, -0.0210072},
-		{-120.0 * DEG_TO_RAD, 0.0, 0.0      , 0.0053804, -0.0571664, -0.0322847, 0.1211983, 0.0895678, -0.1416121, -0.1317091,  0.0759677,  0.0834037}
-	};
+    private final static double[][] GS50_E = new double [][] {
+        {  45.0 * DEG_TO_RAD, 0.0, 0.9827497, 0.0210669, -0.1031415, -0.0323337, 0.0502303, 0.0251805, -0.0012315,  0.0072202, -0.0194029, -0.0210072},
+        {-120.0 * DEG_TO_RAD, 0.0, 0.0      , 0.0053804, -0.0571664, -0.0322847, 0.1211983, 0.0895678, -0.1416121, -0.1317091,  0.0759677,  0.0834037}
+    };
 
-	private final static double[][] ALASKA_E = new double [][] {
-		{  64.0 * DEG_TO_RAD, 0.0, 0.9945303,  0.0052083, 0.0072721, -0.0151089,  0.0642675,  0.3582802},
-		{-152.0 * DEG_TO_RAD, 0.0, 0.0      , -0.0027404, 0.0048181, -0.1932526, -0.1381226, -0.2884586}
-	};
+    private final static double[][] ALASKA_E = new double [][] {
+        {  64.0 * DEG_TO_RAD, 0.0, 0.9945303,  0.0052083, 0.0072721, -0.0151089,  0.0642675,  0.3582802},
+        {-152.0 * DEG_TO_RAD, 0.0, 0.0      , -0.0027404, 0.0048181, -0.1932526, -0.1381226, -0.2884586}
+    };
 
     public String getName() {
         return "Modified Stereographic";
@@ -153,10 +153,10 @@ public final class ModifiedStereographic implements Azimuthal {
 
             j = 0;
             do {
-            	xp_old = xp;
-            	yp_old = yp;
+                xp_old = xp;
+                yp_old = yp;
 
-            	r = 2.0 * xp;
+                r = 2.0 * xp;
                 sp = xp * xp + yp * yp;
 
                 aM[0][0] = consts[0][m];
@@ -188,19 +188,19 @@ public final class ModifiedStereographic implements Azimuthal {
                 }
 
                 // (26-11)
-            	f[0] = xp * aM[0][n - 1] - yp * aM[1][n - 1] + bM[0][n - 1] - oxp;
-            	f[1] = xp * aM[1][n - 1] + yp * aM[0][n - 1] + bM[1][n - 1] - oyp;
+                f[0] = xp * aM[0][n - 1] - yp * aM[1][n - 1] + bM[0][n - 1] - oxp;
+                f[1] = xp * aM[1][n - 1] + yp * aM[0][n - 1] + bM[1][n - 1] - oyp;
 
-            	// (26-8)
-            	F[0] = xp * cM[0][n - 2] - yp * cM[1][n - 2] + dM[0][n - 2];
-            	F[1] = xp * cM[1][n - 2] + yp * cM[0][n - 2] + dM[1][n - 2];
+                // (26-8)
+                F[0] = xp * cM[0][n - 2] - yp * cM[1][n - 2] + dM[0][n - 2];
+                F[1] = xp * cM[1][n - 2] + yp * cM[0][n - 2] + dM[1][n - 2];
 
-            	d_denom = (F[0] * F[0] + F[1] * F[1]);
-            	dxp = (f[0] * F[0] + f[1] * F[1]) / d_denom;
-            	dyp = (f[1] * F[0] - f[0] * F[1]) / d_denom;
+                d_denom = (F[0] * F[0] + F[1] * F[1]);
+                dxp = (f[0] * F[0] + f[1] * F[1]) / d_denom;
+                dyp = (f[1] * F[0] - f[0] * F[1]) / d_denom;
 
-            	xp -= dxp;
-            	yp -= dyp;
+                xp -= dxp;
+                yp -= dyp;
             } while (++j < SERIES_EXPANSION_LIMIT && NEAR_ZERO_DEG < StrictMath.abs(xp - xp_old) && NEAR_ZERO_DEG < StrictMath.abs(yp - yp_old));
 
             rho = StrictMath.hypot(xp, yp);
@@ -253,13 +253,13 @@ public final class ModifiedStereographic implements Azimuthal {
         else if(datum.getProperty("useGS48")     == 1.0) consts = GS48_S;
         else if(datum.getProperty("useGS50_E")   == 1.0) consts = GS50_E;
 
-    	int m       = consts[0].length - 1; // used by aM, bM
-    	int n       = m - 1;                // used by cN, dN
+        int m       = consts[0].length - 1; // used by aM, bM
+        int n       = m - 1;                // used by cN, dN
 
-    	double lat1 = consts[0][0];
-    	double lon0 = consts[1][0];
+        double lat1 = consts[0][0];
+        double lon0 = consts[1][0];
 
-    	double x[] = new double[lon.length];
+        double x[] = new double[lon.length];
         double y[] = new double[lat.length];
 
         double hlf_e = e * 0.5;
@@ -268,15 +268,15 @@ public final class ModifiedStereographic implements Azimuthal {
 
         // (3-1)
         double chi1 = 2.0 *
-    			(
-    					StrictMath.atan(
-    							StrictMath.tan(PI_DIV_4 + lat1 * 0.5) *
-    							StrictMath.pow(
-    									(1.0 - esinlat1) /
-    									(1.0 + esinlat1),
-    									hlf_e)
-    							)
-    					) + N_PI_DIV_2;
+                (
+                        StrictMath.atan(
+                                StrictMath.tan(PI_DIV_4 + lat1 * 0.5) *
+                                StrictMath.pow(
+                                        (1.0 - esinlat1) /
+                                        (1.0 + esinlat1),
+                                        hlf_e)
+                                )
+                        ) + N_PI_DIV_2;
 
         double coschi1 = StrictMath.cos(chi1);
         double sinchi1 = StrictMath.sin(chi1);
@@ -294,56 +294,56 @@ public final class ModifiedStereographic implements Azimuthal {
         double[][] bM = new double[2][m];
 
         for(int i = 0; i < lon.length; ++i) {
-        	esinlat = e * StrictMath.sin(lat[i]);
+            esinlat = e * StrictMath.sin(lat[i]);
 
             // (3-1)
-        	chi = 2.0 *
-        			(
-        					StrictMath.atan(
-        							StrictMath.tan(PI_DIV_4 + lat[i] * 0.5) *
-        							StrictMath.pow(
-        									(1.0 - esinlat) /
-        									(1.0 + esinlat),
-        									hlf_e)
-        							)
-        					) + N_PI_DIV_2;
+            chi = 2.0 *
+                    (
+                            StrictMath.atan(
+                                    StrictMath.tan(PI_DIV_4 + lat[i] * 0.5) *
+                                    StrictMath.pow(
+                                            (1.0 - esinlat) /
+                                            (1.0 + esinlat),
+                                            hlf_e)
+                                    )
+                            ) + N_PI_DIV_2;
 
-        	coschi = StrictMath.cos(chi);
-        	sinchi = StrictMath.sin(chi);
+            coschi = StrictMath.cos(chi);
+            sinchi = StrictMath.sin(chi);
 
-        	lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
-        	coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
+            lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
+            coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
 
-        	s = 2.0 / (1.0 + sinchi1 * sinchi + coschi1 * coschi * coslon_M_lon0);
-        	xp = s * coschi * StrictMath.sin(lon_M_lon0);
-        	yp = s * (coschi1 * sinchi - sinchi1 * coschi * coslon_M_lon0);
+            s = 2.0 / (1.0 + sinchi1 * sinchi + coschi1 * coschi * coslon_M_lon0);
+            xp = s * coschi * StrictMath.sin(lon_M_lon0);
+            yp = s * (coschi1 * sinchi - sinchi1 * coschi * coslon_M_lon0);
 
-        	r = 2.0 * xp;
-    		sp = xp * xp + yp * yp;
+            r = 2.0 * xp;
+            sp = xp * xp + yp * yp;
 
-    		aM[0][0] = consts[0][m];
-    		aM[1][0] = consts[1][m];
+            aM[0][0] = consts[0][m];
+            aM[1][0] = consts[1][m];
 
-    		bM[0][0] = consts[0][n];
-    		bM[1][0] = consts[1][n];
+            bM[0][0] = consts[0][n];
+            bM[1][0] = consts[1][n];
 
-        	for(int j = 1; j < m; j++) {
-        		aM[0][j] = bM[0][j - 1] + r * aM[0][j - 1];
-        		aM[1][j] = bM[1][j - 1] + r * aM[1][j - 1];
+            for(int j = 1; j < m; j++) {
+                aM[0][j] = bM[0][j - 1] + r * aM[0][j - 1];
+                aM[1][j] = bM[1][j - 1] + r * aM[1][j - 1];
 
-        		// In the last iteration these values are good because
-        		// g0 is in that position (usually 0.0)
-        		bM[0][j] = consts[0][n - j] - sp * aM[0][j - 1];
-        		bM[1][j] = consts[1][n - j] - sp * aM[1][j - 1];
-        	}
+                // In the last iteration these values are good because
+                // g0 is in that position (usually 0.0)
+                bM[0][j] = consts[0][n - j] - sp * aM[0][j - 1];
+                bM[1][j] = consts[1][n - j] - sp * aM[1][j - 1];
+            }
 
-    		x[i] = a * (xp * aM[0][n - 1] - yp * aM[1][n - 1] + bM[0][n - 1]);
-    		y[i] = a * (xp * aM[1][n - 1] + yp * aM[0][n - 1] + bM[1][n - 1]);
+            x[i] = a * (xp * aM[0][n - 1] - yp * aM[1][n - 1] + bM[0][n - 1]);
+            y[i] = a * (xp * aM[1][n - 1] + yp * aM[0][n - 1] + bM[1][n - 1]);
         }
 
         return new double[][] {x, y};
     }
- 
+
     public Set<String> getDatumProperties() {
         return new HashSet<String>(Arrays.asList(new String[]{
                 "useMiller",

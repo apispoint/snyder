@@ -87,7 +87,7 @@ public final class EckertVI implements Pseudocylindrical, Spherical {
         int j;
 
         for(int i = 0; i < lon.length; ++i) {
-        	sinlat = StrictMath.sin(lat[i]);
+            sinlat = StrictMath.sin(lat[i]);
             theta = lat[i];
             j = 0;
             do {

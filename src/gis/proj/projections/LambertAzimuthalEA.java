@@ -425,7 +425,6 @@ public final class LambertAzimuthalEA implements Azimuthal {
         return new HashSet<String>(Arrays.asList(new String[]{
                 "lon0",
                 "lat1"}));
-
     }
 
 }

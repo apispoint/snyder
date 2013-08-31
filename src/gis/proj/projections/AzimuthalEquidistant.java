@@ -83,8 +83,8 @@ public final class AzimuthalEquidistant implements Azimuthal {
             double M, mu, rho;
 
             for(int i = 0; i < x.length; ++i) {
-            	rho = StrictMath.hypot(x[i], y[i]);
-            	M = -rho * poleFactor + Mp * poleFactor;
+                rho = StrictMath.hypot(x[i], y[i]);
+                M = -rho * poleFactor + Mp * poleFactor;
                 mu = M / MU_DIV;
 
                 lat[i] = mu + ((3.0/2.0) * E1 - (27.0 / 32.0)*(E1 * E1 * E1)) * StrictMath.sin(2.0 * mu);
@@ -172,31 +172,31 @@ public final class AzimuthalEquidistant implements Azimuthal {
         // Oblique et Equatorial aspects
         else {
 
-        	double
-        		coslat1 = StrictMath.cos(lat1),
-        		sinlat1 = StrictMath.sin(lat1);
+            double
+            coslat1 = StrictMath.cos(lat1),
+            sinlat1 = StrictMath.sin(lat1);
 
-        	double rho, c, cosc, sinc;
+            double rho, c, cosc, sinc;
 
-        	for(int i = 0; i < x.length; ++i) {
-        		rho = StrictMath.hypot(x[i], y[i]);
-        		c = rho / R;
+            for(int i = 0; i < x.length; ++i) {
+                rho = StrictMath.hypot(x[i], y[i]);
+                c = rho / R;
 
-        		cosc = StrictMath.cos(c);
-        		sinc = StrictMath.sin(c);
+                cosc = StrictMath.cos(c);
+                sinc = StrictMath.sin(c);
 
-        		if(StrictMath.abs(rho) < NEAR_ZERO_DEG) {
-        			lon[i] = lon0;
-        			lat[i] = lat1;
-        		} else {
-        			lon[i] = normalizeLonRad(lon0 + StrictMath.atan2(
-        					x[i] * sinc,
-        					rho * coslat1 *cosc - y[i] * sinlat1 * sinc
-        					));
+                if(StrictMath.abs(rho) < NEAR_ZERO_DEG) {
+                    lon[i] = lon0;
+                    lat[i] = lat1;
+                } else {
+                    lon[i] = normalizeLonRad(lon0 + StrictMath.atan2(
+                            x[i] * sinc,
+                            rho * coslat1 *cosc - y[i] * sinlat1 * sinc
+                            ));
 
-        			lat[i] = StrictMath.asin(cosc * sinlat1 + (y[i] * sinc * coslat1 / rho));
-        		}
-        	}
+                    lat[i] = StrictMath.asin(cosc * sinlat1 + (y[i] * sinc * coslat1 / rho));
+                }
+            }
         }
 
         return new double[][] {lon, lat};
@@ -221,27 +221,27 @@ public final class AzimuthalEquidistant implements Azimuthal {
 
         // Equatorial aspect
         if(StrictMath.abs(lat1) < NEAR_ZERO_RAD) {
-        	double lon_M_lon0, coslat, kp, c, coslon_M_lon0;
+            double lon_M_lon0, coslat, kp, c, coslon_M_lon0;
 
-        	for(int i = 0; i < lon.length; ++i) {
-        		coslat = StrictMath.cos(lat[i]);
+            for(int i = 0; i < lon.length; ++i) {
+                coslat = StrictMath.cos(lat[i]);
 
-        		lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
-        		coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
+                lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
+                coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
 
-        		// eq5_3
-        		c = StrictMath.acos(coslat * coslon_M_lon0);
-        		kp = c / StrictMath.sin(c);
+                // eq5_3
+                c = StrictMath.acos(coslat * coslon_M_lon0);
+                kp = c / StrictMath.sin(c);
 
-        		if(Double.isInfinite(kp) || Double.isNaN(kp)) {
-        			kp = 1.0;
-        			x[i] = 0.0;
-        			y[i] = 0.0;
-        		} else {
-            		x[i] = R * kp * coslat * StrictMath.sin(lon_M_lon0);
-            		y[i] = R * kp * StrictMath.sin(lat[i]);
-        		}
-        	}
+                if(Double.isInfinite(kp) || Double.isNaN(kp)) {
+                    kp = 1.0;
+                    x[i] = 0.0;
+                    y[i] = 0.0;
+                } else {
+                    x[i] = R * kp * coslat * StrictMath.sin(lon_M_lon0);
+                    y[i] = R * kp * StrictMath.sin(lat[i]);
+                }
+            }
         }
         // Polar aspect
         else if (POLE_RAD - StrictMath.abs(lat1) < NEAR_ZERO_RAD) {
@@ -273,10 +273,10 @@ public final class AzimuthalEquidistant implements Azimuthal {
                 M -= StrictMath.sin(6.0 * lat[i]) * M_factor6;
                 M *= a;
 
-            	rho = Mp + (-M * poleFactor);
+                rho = Mp + (-M * poleFactor);
 
-            	x[i] = rho * StrictMath.sin(lon[i] - lon0);
-            	y[i] = (-rho * poleFactor) * StrictMath.cos(lon[i] - lon0);
+                x[i] = rho * StrictMath.sin(lon[i] - lon0);
+                y[i] = (-rho * poleFactor) * StrictMath.cos(lon[i] - lon0);
             }
         }
         else if(useGuam == true) {
@@ -346,31 +346,31 @@ public final class AzimuthalEquidistant implements Azimuthal {
         }
         // Oblique aspect
         else {
-        	double coslat1 = StrictMath.cos(lat1);
-        	double sinlat1 = StrictMath.sin(lat1);
+            double coslat1 = StrictMath.cos(lat1);
+            double sinlat1 = StrictMath.sin(lat1);
 
-        	double lon_M_lon0, coslat, sinlat, kp, c, coslon_M_lon0, rhc;
+            double lon_M_lon0, coslat, sinlat, kp, c, coslon_M_lon0, rhc;
 
-        	for(int i = 0; i < lon.length; ++i) {
-        		coslat = StrictMath.cos(lat[i]);
-        		sinlat = StrictMath.sin(lat[i]);
+            for(int i = 0; i < lon.length; ++i) {
+                coslat = StrictMath.cos(lat[i]);
+                sinlat = StrictMath.sin(lat[i]);
 
-        		lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
-        		coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
+                lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
+                coslon_M_lon0 = StrictMath.cos(lon_M_lon0);
 
-        		// eq5_3
-        		rhc = sinlat1 * sinlat + coslat1 * coslat * coslon_M_lon0;
-        		c = StrictMath.acos(rhc);
-        		if(StrictMath.abs(1.0 - rhc) < NEAR_ZERO_DEG) {
-        		    y[i] = x[i] = 0;
-        		}
-        		else {
-        		    kp = c / StrictMath.sin(c);
+                // eq5_3
+                rhc = sinlat1 * sinlat + coslat1 * coslat * coslon_M_lon0;
+                c = StrictMath.acos(rhc);
+                if(StrictMath.abs(1.0 - rhc) < NEAR_ZERO_DEG) {
+                    y[i] = x[i] = 0;
+                }
+                else {
+                    kp = c / StrictMath.sin(c);
 
-        		    x[i] = R * kp * coslat * StrictMath.sin(lon_M_lon0);
-        		    y[i] = R * kp * (coslat1 * sinlat - sinlat1 * coslat * coslon_M_lon0);
-        		}
-        	}
+                    x[i] = R * kp * coslat * StrictMath.sin(lon_M_lon0);
+                    y[i] = R * kp * (coslat1 * sinlat - sinlat1 * coslat * coslon_M_lon0);
+                }
+            }
         }
 
         return new double[][] {x, y};

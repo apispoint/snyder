@@ -65,8 +65,8 @@ public final class Bonne implements Conic {
 
         // Avoid division by Zero
         // TODO When lat1 == 0; use Sinusoidal projection
-//        if(StrictMath.abs(lat1) < NEAR_ZERO_RAD)
-//            lat1 = NEAR_ZERO_RAD;
+        //        if(StrictMath.abs(lat1) < NEAR_ZERO_RAD)
+        //            lat1 = NEAR_ZERO_RAD;
 
         M1  = lat1 * M_factor0;
         M1 -= StrictMath.sin(2.0 * lat1) * M_factor2;
@@ -98,9 +98,9 @@ public final class Bonne implements Conic {
             m = StrictMath.cos(lat[i]) / StrictMath.sqrt(1.0 - esq * sinlat * sinlat);
 
             if(SnyderMath.POLE_RAD - StrictMath.abs(lat[i]) < NEAR_ZERO_RAD)
-            	lon[i] = lon0;
+                lon[i] = lon0;
             else
-            	lon[i] = normalizeLonRad(lon0 + rho * (StrictMath.atan2(rhoFactor * x[i], rhoFactor * (a * m1 / sinlat1 - y[i]))) / (a * m));
+                lon[i] = normalizeLonRad(lon0 + rho * (StrictMath.atan2(rhoFactor * x[i], rhoFactor * (a * m1 / sinlat1 - y[i]))) / (a * m));
         }
 
         return new double[][] {lon, lat};
@@ -125,8 +125,8 @@ public final class Bonne implements Conic {
 
         // Avoid division by Zero
         // TODO When lat1 == 0; use Sinusoidal projection
-//        if(StrictMath.abs(lat1) < NEAR_ZERO_RAD)
-//            lat1 = NEAR_ZERO_RAD;
+        //        if(StrictMath.abs(lat1) < NEAR_ZERO_RAD)
+        //            lat1 = NEAR_ZERO_RAD;
 
         M1  = lat1 * M_factor0;
         M1 -= StrictMath.sin(2.0 * lat1) * M_factor2;

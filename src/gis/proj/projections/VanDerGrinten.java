@@ -59,28 +59,28 @@ public final class VanDerGrinten implements Miscellaneous, Spherical {
         double X, Y, c1, c2, c3, d, a1, m1, theta1, XX, YY;
 
         for(int i = 0; i < lon.length; ++i) {
-        	X  = x[i] / piR;
-        	XX = X*X;
-        	Y  = y[i] / piR;
-        	YY = Y*Y;
+            X  = x[i] / piR;
+            XX = X*X;
+            Y  = y[i] / piR;
+            YY = Y*Y;
 
-        	c1 = -StrictMath.abs(Y) * (1.0 + XX + YY);
-        	c2 = c1 - 2.0 * YY + XX;
-        	c3 = -2.0 * c1 + 1.0 + 2.0 * YY + (XX + YY) * (XX + YY);
-        	d  = YY / c3 + (2.0 * (c2 * c2 * c2) / (c3 * c3 * c3) - 9.0 * c1 * c2 / (c3 * c3)) / 27.0;
-        	a1 = (c1 - (c2 * c2) / (3.0 * c3)) / c3;
-        	m1 = 2.0 * StrictMath.sqrt(-a1 / 3.0);
+            c1 = -StrictMath.abs(Y) * (1.0 + XX + YY);
+            c2 = c1 - 2.0 * YY + XX;
+            c3 = -2.0 * c1 + 1.0 + 2.0 * YY + (XX + YY) * (XX + YY);
+            d  = YY / c3 + (2.0 * (c2 * c2 * c2) / (c3 * c3 * c3) - 9.0 * c1 * c2 / (c3 * c3)) / 27.0;
+            a1 = (c1 - (c2 * c2) / (3.0 * c3)) / c3;
+            m1 = 2.0 * StrictMath.sqrt(-a1 / 3.0);
 
-        	theta1 = (1.0/3.0) * StrictMath.acos((3.0 * d) / (a1 * m1));
+            theta1 = (1.0/3.0) * StrictMath.acos((3.0 * d) / (a1 * m1));
 
-        	if(StrictMath.abs(X) < NEAR_ZERO_DEG)
-        		lon[i] = lon0;
-        	else
-        		lon[i] = normalizeLonRad(
-        				PI * (XX +YY-1.0+StrictMath.sqrt(1.0+2.0*(XX-YY) +(XX+YY)*(XX+YY))) / (2.0 * X) + lon0
-        				);
+            if(StrictMath.abs(X) < NEAR_ZERO_DEG)
+                lon[i] = lon0;
+            else
+                lon[i] = normalizeLonRad(
+                        PI * (XX +YY-1.0+StrictMath.sqrt(1.0+2.0*(XX-YY) +(XX+YY)*(XX+YY))) / (2.0 * X) + lon0
+                        );
 
-        	lat[i] = StrictMath.copySign(PI * (-m1 * StrictMath.cos(theta1 + PI / 3.0) - c2 / (3.0 * c3)), y[i]);
+            lat[i] = StrictMath.copySign(PI * (-m1 * StrictMath.cos(theta1 + PI / 3.0) - c2 / (3.0 * c3)), y[i]);
         }
 
         return new double[][] {lon, lat};
@@ -100,35 +100,35 @@ public final class VanDerGrinten implements Miscellaneous, Spherical {
         double lon_M_lon0, theta, A, G, P, Q, AA, PP, AA_P_PP, G_M_PP;
 
         for(int i = 0; i < lon.length; ++i) {
-        	lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
-        	theta = StrictMath.asin(StrictMath.abs(lat[i] * two_over_pi));
+            lon_M_lon0 = normalizeLonRad(lon[i] - lon0);
+            theta = StrictMath.asin(StrictMath.abs(lat[i] * two_over_pi));
 
-        	A = 0.5 * StrictMath.abs(PI / lon_M_lon0 - lon_M_lon0 / PI);
-        	AA = A * A;
-        	G = StrictMath.cos(theta) / (StrictMath.sin(theta) + StrictMath.cos(theta) - 1.0);
-        	P = G * (2.0 / StrictMath.sin(theta) - 1.0);
-        	PP = P * P;
-        	Q = AA + G;
-        	G_M_PP = G - PP;
-        	AA_P_PP = AA + PP;
+            A = 0.5 * StrictMath.abs(PI / lon_M_lon0 - lon_M_lon0 / PI);
+            AA = A * A;
+            G = StrictMath.cos(theta) / (StrictMath.sin(theta) + StrictMath.cos(theta) - 1.0);
+            P = G * (2.0 / StrictMath.sin(theta) - 1.0);
+            PP = P * P;
+            Q = AA + G;
+            G_M_PP = G - PP;
+            AA_P_PP = AA + PP;
 
-        	if(StrictMath.abs(lat[i]) < NEAR_ZERO_RAD) {
-        		x[i] = R * lon_M_lon0;
-        		y[i] = 0.0;
-        	}
-        	else if(StrictMath.abs(lon_M_lon0) < NEAR_ZERO_RAD) {// || POS_POLE_RADIANS - StrictMath.abs(lat[i]) < NEAR_ZERO_RAD) {
-        		x[i] = 0.0;
-        		y[i] = StrictMath.copySign(piR * StrictMath.tan(theta * 0.5), lat[i]);
-        	}
-        	else {
-        		x[i] = StrictMath.copySign(piR * (
-        				A * G_M_PP + StrictMath.sqrt(AA * G_M_PP * G_M_PP - AA_P_PP * (G * G - PP))
-        				) / AA_P_PP, lon_M_lon0);
+            if(StrictMath.abs(lat[i]) < NEAR_ZERO_RAD) {
+                x[i] = R * lon_M_lon0;
+                y[i] = 0.0;
+            }
+            else if(StrictMath.abs(lon_M_lon0) < NEAR_ZERO_RAD) {
+                x[i] = 0.0;
+                y[i] = StrictMath.copySign(piR * StrictMath.tan(theta * 0.5), lat[i]);
+            }
+            else {
+                x[i] = StrictMath.copySign(piR * (
+                        A * G_M_PP + StrictMath.sqrt(AA * G_M_PP * G_M_PP - AA_P_PP * (G * G - PP))
+                        ) / AA_P_PP, lon_M_lon0);
 
-        		y[i] =  StrictMath.copySign(piR * (
-        				P * Q - A * StrictMath.sqrt((AA + 1.0) * AA_P_PP - Q * Q)
-        				) / AA_P_PP, lat[i]);
-        	}
+                y[i] =  StrictMath.copySign(piR * (
+                        P * Q - A * StrictMath.sqrt((AA + 1.0) * AA_P_PP - Q * Q)
+                        ) / AA_P_PP, lat[i]);
+            }
         }
 
         return new double[][] {x, y};
