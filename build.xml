@@ -15,9 +15,10 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<project name="Snyder" default="dist" basedir=".">
+<project name="snyder" default="dist" basedir=".">
 
   <!-- set global properties for this build -->
+  <property name="version" value="2.0.0"/>
   <property name="src" location="src"/>
   <property name="build" location="build"/>
   <property name="dist"  location="dist/${ant.project.name}"/>
@@ -32,7 +33,7 @@
   <path id="cp"> <fileset refid="jars" /> </path>
 
   <pathconvert property="classpath" refid="cp" pathsep=" " dirsep="/">
-  	<map from="${lib}" to="${libDirName}" />
+      <map from="${lib}" to="${libDirName}" />
   </pathconvert>
 
   <target name="init">
@@ -51,19 +52,19 @@
   <target name="dist" depends="compile" description="generate the distribution" >
     <!-- Create the distribution directory -->
 
-  	<mkdir dir="${dist}"/>
+    <mkdir dir="${dist}"/>
 
-  	<!-- Put everything in ${build} into the ${name}-${DSTAMP}.jar file -->
+    <!-- Put everything in ${build} into the ${name}-${DSTAMP}.jar file -->
     <jar
-    	jarfile="${dist}/${ant.project.name}.jar"
-    	basedir="${build}"
-    	excludes="gis/proj/drivers/**,gis/proj/Complex*,gis/proj/projections/*Alt.*">
-    	<!--
+        jarfile="${dist}/${ant.project.name}-${version}.jar"
+        basedir="${build}"
+        excludes="gis/proj/drivers/**,gis/proj/Complex*,gis/proj/projections/*Alt.*">
+        <!--
         <manifest>
           <attribute name="Main-Class" value="${main-class}"/>
           <attribute name="Class-Path" value="${classpath}"/>
         </manifest>
-  	    -->
+        -->
     </jar>
   </target>
 
