@@ -17,7 +17,7 @@
 */
 package gis.proj;
 
-public class ComplexNumber {
+public class ComplexNumber implements Cloneable {
 
     private double re;
     private double im;
