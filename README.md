@@ -40,7 +40,7 @@ When creating a distribution jar file (e.g. snyder-*.jar) from the build
 system, it is not necessary to include anything from either of the above
 directories.
 
-The fiducial value file is: **resources**/**json**/**Fiducials.json**
+The fiducial value file is: **resources** / **json** / **Fiducials.json**
 
 Code Example
 ============
