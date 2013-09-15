@@ -3,7 +3,15 @@ Snyder Projection Implementation
 
 Copyright (C) 2012, 2013  Jeremy J. Gibbons
 
-References:
+Description
+===========
+
+Snyder is a projection library implementing Snyder's seminal USGS projection
+text including all fiducial appendix values for testing.  The code is written in
+Java and runs on Android.  The core library code has no external dependencies.
+
+References
+==========
 
     Snyder, J. P. Map Projections--A Working Manual.
     U. S. Geological Survey Professional Paper 1395.
@@ -31,6 +39,8 @@ ellipsoid configuration parameter files necessary to run only the test drivers.
 When creating a distribution jar file (e.g. snyder-*.jar) from the build
 system, it is not necessary to include anything from either of the above
 directories.
+
+The fiducial value file is: **resources**/**json**/**Fiducials.json**
 
 Code Example
 ============
@@ -91,6 +101,6 @@ Tidy-up + Features + Tasks
     (e.g. 1\_MUL\_5, 1\_DIV\_PI, 1\_ADD\_x, 1\_SUB\_x)
 
 [ ] Consolidate and promote common functions to SnyderMath
-    (e.g. Conformal latitude function)
+    (e.g. Conformal latitude function; would need performance testing)
 
 [ ] Select new licensing (i.e. permissive)
