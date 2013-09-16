@@ -89,18 +89,3 @@ Code Example
                 ", lat: " + (float) (inverse[1][0] * SnyderMath.RAD_TO_DEG));
     }
 ```
-
-Tidy-up + Features + Tasks
-==========================
-
-[ ] Create Proj4 factory class
-
-[ ] Supplant StrictMath.* with SnyderMath.*
-
-[ ] Standardize variable naming (\*, \\, \+, \-)
-    (e.g. 1\_MUL\_5, 1\_DIV\_PI, 1\_ADD\_x, 1\_SUB\_x)
-
-[ ] Consolidate and promote common functions to SnyderMath
-    (e.g. Conformal latitude function; would need performance testing)
-
-[ ] Select new licensing (i.e. permissive)
