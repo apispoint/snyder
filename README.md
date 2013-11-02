@@ -22,7 +22,7 @@ SnyderVis data provided by:
 
     A Global Self-consistent, Hierarchical, High-resolution Geography Database
     http://www.soest.hawaii.edu/pwessel/gshhg
-    Extracted from version 2.2.3 on 1 July 2013
+    Extracted from version 2.2.4 on 1 November 2013
 
 Features
 ========
