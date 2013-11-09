@@ -10,37 +10,12 @@ Snyder is a map projection library implementing Snyder's seminal USGS projection
 text including all fiducial appendix values for testing.  The code is written in
 Java and runs on Android.  The core library code has no external dependencies.
 
-References
-==========
-
-    Snyder, J. P. Map Projections--A Working Manual.
-    U. S. Geological Survey Professional Paper 1395.
-    Washington, DC: U. S. Government Printing Office, 1987, 1994 3rd Printing.
-    http://pubs.er.usgs.gov/publication/pp1395
-
-SnyderVis data provided by:
-
-    A Global Self-consistent, Hierarchical, High-resolution Geography Database
-    http://www.soest.hawaii.edu/pwessel/gshhg
-    Extracted from version 2.2.4 on 1 November 2013
-
 Features
 ========
     + Android compatible
     + Thread safe
     + Minimum class topology
     + Small library footprint
-
-Drivers + Deployment
-====================
-
-The **lib** + **resources** directories contain the libraries, projection and
-ellipsoid configuration parameter files necessary to run only the test drivers.
-When creating a distribution jar file (e.g. snyder-*.jar) from the build
-system, it is not necessary to include anything from either of the above
-directories.
-
-The fiducial value file is: **resources** / **json** / **Fiducials.json**
 
 Code Example
 ============
@@ -89,3 +64,28 @@ Code Example
                 ", lat: " + (float) (inverse[1][0] * SnyderMath.RAD_TO_DEG));
     }
 ```
+
+Test Drivers + Deployment
+=========================
+
+The **lib** + **resources** directories contain the libraries, projection and
+ellipsoid configuration parameter files necessary to run only the test drivers.
+When creating a distribution jar file (e.g. snyder-*.jar) from the build
+system, it is not necessary to include anything from either of the above
+directories.
+
+Fiducial values file: **resources** / **json** / **Fiducials.json**
+
+References
+==========
+
+    Snyder, J. P. Map Projections--A Working Manual.
+    U. S. Geological Survey Professional Paper 1395.
+    Washington, DC: U. S. Government Printing Office, 1987, 1994 3rd Printing.
+    http://pubs.er.usgs.gov/publication/pp1395
+
+SnyderVis data provided by:
+
+    A Global Self-consistent, Hierarchical, High-resolution Geography Database
+    http://www.soest.hawaii.edu/pwessel/gshhg
+    Extracted from version 2.2.4 on 1 November 2013
