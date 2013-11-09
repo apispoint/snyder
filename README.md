@@ -1,12 +1,12 @@
-Snyder Projection Implementation
-================================
+Snyder Map Projection Implementation
+====================================
 
 Copyright (C) 2012, 2013  Jeremy J. Gibbons
 
 Description
 ===========
 
-Snyder is a projection library implementing Snyder's seminal USGS projection
+Snyder is a map projection library implementing Snyder's seminal USGS projection
 text including all fiducial appendix values for testing.  The code is written in
 Java and runs on Android.  The core library code has no external dependencies.
 
