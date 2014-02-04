@@ -1,7 +1,7 @@
 Snyder Map Projection Implementation
 ====================================
 
-Copyright (C) 2012, 2013  Jeremy J. Gibbons
+Copyright (C) 2012-2014  Jeremy J. Gibbons
 
 Description
 ===========
@@ -88,4 +88,4 @@ SnyderVis data provided by:
 
     A Global Self-consistent, Hierarchical, High-resolution Geography Database
     http://www.soest.hawaii.edu/pwessel/gshhg
-    Extracted from version 2.2.4 on 1 November 2013
+    Extracted from version 2.3.0 on 1 February 2014
