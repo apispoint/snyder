@@ -1,9 +1,0 @@
-{
-"name":"gis.proj.projections.AlbersEA",
-"properties":{
-"lon0":"0",
-"lat0":"10r",
-"lat2":"-10r",
-"lat1":"0"
-}
-}

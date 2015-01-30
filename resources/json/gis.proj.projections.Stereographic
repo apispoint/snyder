@@ -1,8 +1,0 @@
-{
-"name":"gis.proj.projections.Stereographic",
-"properties":{
-"lon0":"0",
-"k0":"1",
-"lat1":"0"
-}
-}

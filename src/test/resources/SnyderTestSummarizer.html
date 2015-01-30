@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snyder Test Summarizer</title>
+<style media="screen" type="text/css">
+* {
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight:200;
+    letter-spacing:1px;
+}
+.projectheaderclass {
+    background:#4682B4;
+    color:#FFFFFF;
+    font-size:600%;
+}
+.subprojectheaderclass {
+    background:#4682B4;
+    color:#FFFFFF;
+    font-size:120%;
+}
+.paddedcell {
+    padding-left:15px
+}
+.rightcell {
+    text-align:right
+}
+.darkcell {
+    background:#DDDDDD
+}
+.lightcell {
+    background:#EEEEEE
+}
+</style>
+</head>
+<body>
+<div class='projectheaderclass' style='font-weight:100'>Snyder</div>
+<div class='subprojectheaderclass'>Fiducial Test Summarizer</div>
+<br>
+<div id="fileInfo">Drop a Snyder fiducial output file here</div>
+<br>
+<div id="fileContent"></div>
+<div style="font-size:60%"><br>Copyright &copy; 2012, 2013 APIS Point, LLC.</div>
+<script>
+    var fr;
+
+    function handleFileSelect(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+
+        files = evt.dataTransfer.files; // FileList object.
+
+        // files is a FileList of File objects. List some properties.
+        var f = files[0];
+
+        var output = [];
+        output.push('read: ', escape(f.name), ', size: ',
+            f.size, ' bytes, last modified: ',
+            f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a');
+
+        document.getElementById('fileInfo').innerHTML = output.join('');
+
+        fr = new FileReader();
+        fr.onload = receivedText;
+        fr.readAsText(f);
+    }
+
+	function projectionNameFormat(proj) {
+		var array = proj.split(".");
+		return array[array.length - 1];
+	}
+
+    function decimalFormat(num) {
+        return num.toFixed(9).replace(/0+$/, "0");
+    }
+
+    function receivedText() {
+        var jsonObj = JSON.parse(fr.result);
+        var output =
+            "<tr>" +
+                "<td colspan=2></td>" +
+                "<td colspan=1 style='text-align:left' class='darkcell'>Given</td>" +
+                "<td colspan=2 style='text-align:left' class='lightcell'>Expected</td>" +
+                "<td colspan=2 style='text-align:left' class='darkcell'>Calculated</td>" +
+                "<td>&#916;</td>" +
+            "</tr>";
+
+        output +=
+            "<tr class='subprojectheaderclass'>" +
+                "<td>Projection</td>" +
+                "<td>Ellipsoid</td>" +
+                "<td class='rightcell'>Lon, Lat</td>" +
+                "<td class='rightcell'>X, Y</td>" +
+                "<td class='rightcell'>Lon, Lat</td>" +
+                "<td class='rightcell'>X, Y</td>" +
+                "<td class='rightcell'>Lon, Lat</td>" +
+                "<td class='rightcell'>X, Y</td>" +
+                "<td class='rightcell'>Lon, Lat</td>" +
+            "</tr>";
+
+        for (var i = 0; i < jsonObj.length; i++) {
+            output +=
+            "<tr" + (i & 1 == 1 ? " style='background-color:#EEEEEE'" : "") + ">" +
+                "<td>" + projectionNameFormat(jsonObj[i].projection) + "</td>" +
+                "<td>" + jsonObj[i].ellipsoid  + "</td>" +
+                "<td class='rightcell paddedcell darkcell'>"  + decimalFormat(jsonObj[i].lon)  + "<br>" + decimalFormat(jsonObj[i].lat)  + "</td>" +
+                "<td class='rightcell paddedcell lightcell'>" + decimalFormat(jsonObj[i].ex)   + "<br>" + decimalFormat(jsonObj[i].ey)   + "</td>" +
+                "<td class='rightcell paddedcell lightcell'>" + decimalFormat(jsonObj[i].elon) + "<br>" + decimalFormat(jsonObj[i].elat) + "</td>" +
+                "<td class='rightcell paddedcell darkcell'>"  + decimalFormat(jsonObj[i].cx)   + "<br>" + decimalFormat(jsonObj[i].cy)   + "</td>" +
+                "<td class='rightcell paddedcell darkcell'>"  + decimalFormat(jsonObj[i].clon) + "<br>" + decimalFormat(jsonObj[i].clat) + "</td>" +
+                "<td class='rightcell paddedcell'>"           + decimalFormat(jsonObj[i].dx)   + "<br>" + decimalFormat(jsonObj[i].dy)   + "</td>" +
+                "<td class='rightcell paddedcell'>"           + decimalFormat(jsonObj[i].dlon) + "<br>" + decimalFormat(jsonObj[i].dlat) + "</td>" +
+            "</tr>";
+        }
+
+        document.getElementById('fileContent').innerHTML = "<table style='border-collapse:collapse'>" + output + "</table>";
+    }
+
+    function handleDragOver(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+    }
+
+    // Setup the DnD listeners
+    document.addEventListener('dragover', handleDragOver, false);
+    document.addEventListener('drop', handleFileSelect, false);
+</script>
+</body>
+</html>

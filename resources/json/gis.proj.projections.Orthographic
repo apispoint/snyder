@@ -1,8 +1,0 @@
-{
-"name":"gis.proj.projections.Orthographic",
-"properties":{
-"returnAllPoints":"0",
-"lon0":"0",
-"lat1":"0"
-}
-}

@@ -1,0 +1,17 @@
+{
+"name":"gis.proj.projections.ObliqueCylindricalEA",
+"properties":{
+"latp":"0",
+"useCentralLine":"1",
+"latz":"0",
+"lat2":"60r",
+"lat1":"30r",
+"lonz":"0",
+"gamma":"0",
+"lon2":"-50r",
+"lon1":"-75r",
+"useCentralPoint":"0",
+"lonp":"0",
+"h0":"0.98"
+}
+}

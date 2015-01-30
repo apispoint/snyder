@@ -1,0 +1,8 @@
+{
+"name":"gis.proj.projections.Polyconic",
+"properties":{
+"returnAllPoints":"0",
+"lon0":"0",
+"lat0":"0"
+}
+}

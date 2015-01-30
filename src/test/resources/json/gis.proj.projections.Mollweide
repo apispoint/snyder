@@ -1,0 +1,6 @@
+{
+"name":"gis.proj.projections.Mollweide",
+"properties":{
+"lon0":"0"
+}
+}

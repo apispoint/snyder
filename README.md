@@ -1,7 +1,7 @@
 Snyder Map Projection Implementation
 ====================================
 
-Copyright (C) 2012-2014  Jeremy J. Gibbons
+Copyright (c) 2012-2015  APIS Point, LLC
 
 Description
 ===========
@@ -84,8 +84,15 @@ References
     Washington, DC: U. S. Government Printing Office, 1987, 1994 3rd Printing.
     http://pubs.er.usgs.gov/publication/pp1395
 
-SnyderVis data provided by:
+    SnyderVis data++ provided by:
 
     A Global Self-consistent, Hierarchical, High-resolution Geography Database
     http://www.soest.hawaii.edu/pwessel/gshhg
-    Extracted from version 2.3.0 on 1 February 2014
+    Extracted from version 2.3.4 on 1 January 2015
+
+**NOTES**:
+> ++ SnyderVis GSHHG data files will no longer be updated. For the latest GSHHG
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary updates please follow the GSHHG URI reference above
+
+
+Code licensed under the The MIT License

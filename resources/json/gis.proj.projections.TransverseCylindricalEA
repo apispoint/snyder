@@ -1,8 +1,0 @@
-{
-"name":"gis.proj.projections.TransverseCylindricalEA",
-"properties":{
-"lon0":"0",
-"lat0":"0",
-"h0":"0.98"
-}
-}

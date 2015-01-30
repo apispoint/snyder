@@ -1,0 +1,11 @@
+{
+"name":"gis.proj.projections.AzimuthalEquidistant",
+"properties":{
+"lon0":"0",
+"lat1":"0",
+"useGuam":"0",
+"useMicronesia":"0",
+"x0":"0",
+"y0":"0"
+}
+}

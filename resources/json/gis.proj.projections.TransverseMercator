@@ -1,8 +1,0 @@
-{
-"name":"gis.proj.projections.TransverseMercator",
-"properties":{
-"lon0":"0",
-"lat0":"0",
-"k0":"1"
-}
-}

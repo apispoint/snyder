@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+version = '3.0.0'
+jar {
+    exclude 'gis/proj/drivers/**'
+    exclude 'gis/proj/Complex*'
+    exclude 'gis/proj/projections/*Alt.*'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.fasterxml.jackson.core:jackson-core:2.4+'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.4+'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4+'
+    compile 'com.beust:jcommander:1.+'
+}
