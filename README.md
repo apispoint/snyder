@@ -91,8 +91,7 @@ References
     Extracted from version 2.3.4 on 1 January 2015
 
 **NOTES**:
-> ++ SnyderVis GSHHG data files will no longer be updated. For the latest GSHHG
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary updates please follow the GSHHG URI reference above
+> ++ SnyderVis GSHHG data files will no longer be updated. For the latest GSHHG binary updates please follow the GSHHG URI reference above
 
 
 Code licensed under the The MIT License
