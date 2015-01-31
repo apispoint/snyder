@@ -12,7 +12,7 @@ Java and runs on Android.  The core library code has no external dependencies.
 
 **NOTE**
 
-Snyder's Java map projections library APIs are not compatible with the PROJ4j APIs.
+Snyder Java map projections library APIs are not compatible with the PROJ4j APIs.
 
 Features
 ========
