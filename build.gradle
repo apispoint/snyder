@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 sourceCompatibility = 1.7
-version = '3.0.0'
+version = '3.0.1'
 jar {
     exclude 'gis/proj/drivers/**'
     exclude 'gis/proj/Complex*'

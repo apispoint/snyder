@@ -74,7 +74,18 @@ When creating a distribution jar file (e.g. snyder-*.jar) from the build
 system, it is not necessary to include anything from either of the above
 directories.
 
-Fiducial values file: **resources** / **json** / **Fiducials.json**
+Fiducial values file: **src** / **test** / **resources** / **json** / **Fiducials.json**
+
+Building Snyder
+=========================
+
+```
+$ gradle build
+```
+
+The result is the directory **build** containing the build artifacts including the deployment jar.
+
+Deployment jar library: **build** / **libs** / **snyder-{VERSION}.jar**
 
 References
 ==========
