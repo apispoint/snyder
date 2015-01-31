@@ -10,6 +10,10 @@ Snyder is a map projection library implementing Snyder's seminal USGS projection
 text including all fiducial appendix values for testing.  The code is written in
 Java and runs on Android.  The core library code has no external dependencies.
 
+**NOTE**
+
+Snyder's Java map projections library APIs are not compatible with the PROJ4j APIs.
+
 Features
 ========
     + Android compatible
