@@ -99,7 +99,7 @@ References
 **NOTES**:
 
 <tt>
- <sup>\*</sup> The Snyder Java map projections library APIs are not compatible with the PROJ4j mapping projection APIs.<br/>
+ <sup>\*</sup> The Snyder Java map projections library APIs are not compatible with the PROJ4j mapping projection APIs.<br/><br/>
 <sup>\*\*</sup> SnyderVis GSHHG data files will no longer be updated. For the latest GSHHG binary updates please follow the GSHHG URI reference above
 </tt>
 
