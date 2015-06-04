@@ -1,10 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-version = '3.0.1'
+archivesBaseName = 'ap.snyder'
+version = '3.0.2'
 
 jar {
     exclude 'gis/proj/drivers/**'
@@ -17,8 +15,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.fasterxml.jackson.core:jackson-core:2.5+'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.5+'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.5+'
-    compile 'com.beust:jcommander:1.+'
+    testCompile 'com.fasterxml.jackson.core:jackson-core:2.5+'
+    testCompile 'com.fasterxml.jackson.core:jackson-annotations:2.5+'
+    testCompile 'com.fasterxml.jackson.core:jackson-databind:2.5+'
+    testCompile 'com.beust:jcommander:1.+'
 }

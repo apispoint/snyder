@@ -82,7 +82,7 @@ $ gradle build
 ```
 
 The resulting directory **build** contains the built artifacts including the deployment jar file:<br/>
-**build** / **libs** / **snyder-{VERSION}.jar**
+**build** / **libs** / **ap.snyder-{VERSION}.jar**
 
 References
 ==========
