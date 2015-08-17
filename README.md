@@ -9,7 +9,7 @@ Description
 
 Snyder is a geospatial projection library implementing all projections and the appendix fiducial values for unit testing as defined in John P. Snyder's seminal USGS professional paper, Map Projections--A Working Manual.
 
-The library is free and open-source software licensed under The MIT License. The library runs on Android, is thread safe, and does not require any external dependencies.
+The library is free and open-source software licensed under The MIT License. Snyder projection library runs on Android, is thread safe, and does not require any external dependencies.
 
 Features
 ========
