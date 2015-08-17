@@ -96,8 +96,9 @@ References
    http://www.soest.hawaii.edu/pwessel/gshhg<br/>
    Extracted from version 2.3.4 on 1 January 2015
 
-**NOTES**:
-
-<sup>\*</sup> SnyderVis GSHHG data files will no longer be updated. For the latest GSHHG binary updates please follow the GSHHG URI reference above
+License
+=======
 
 Code licensed under the The MIT License
+
+<sub><sup>\* SnyderVis, GSHHG files will no longer be updated.</sup></sub>
