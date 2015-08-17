@@ -7,9 +7,9 @@ APIS Point, LLC
 Description
 ===========
 
-Snyder<sup>\*</sup> is a map projection library implementing Snyder's seminal USGS projection
-text including all fiducial appendix values for testing.  The code is written in
-Java and runs on Android.  The core library code has no external dependencies.
+Snyder is a geospatial projection library implementing all projections and the appendix fiducial values for unit testing as defined in John P. Snyder's seminal USGS professional paper, Map Projections--A Working Manual.
+
+The library is free and open-source software licensed under The MIT License. The library runs on Android, is thread safe, and does not require any external dependencies.
 
 Features
 ========
@@ -92,13 +92,12 @@ References
    Washington, DC: U. S. Government Printing Office, 1987, 1994 3rd Printing.<br/>
    http://pubs.er.usgs.gov/publication/pp1395
 
-   A Global Self-consistent, Hierarchical, High-resolution Geography Database<sup>\*\*</sup>
+   A Global Self-consistent, Hierarchical, High-resolution Geography Database<sup>\*</sup>
    http://www.soest.hawaii.edu/pwessel/gshhg<br/>
    Extracted from version 2.3.4 on 1 January 2015
 
 **NOTES**:
 
-<sup> \*</sup> The Snyder Java map projections library APIs are not compatible with the PROJ4j mapping projection APIs<br/>
-<sup>\*\*</sup> SnyderVis GSHHG data files will no longer be updated. For the latest GSHHG binary updates please follow the GSHHG URI reference above
+<sup>\*</sup> SnyderVis GSHHG data files will no longer be updated. For the latest GSHHG binary updates please follow the GSHHG URI reference above
 
 Code licensed under the The MIT License
