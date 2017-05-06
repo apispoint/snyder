@@ -1,7 +1,7 @@
 Snyder Map Projection Implementation
 ====================================
 
-Copyright (c) 2012-2015<br/>
+Copyright (c) 2012-2017<br/>
 APIS Point, LLC
 
 Description
@@ -99,6 +99,6 @@ References
 License
 =======
 
-Code licensed under the The MIT License
+Code licensed under the MIT License
 
 <sub><sup>\* SnyderVis, GSHHG files will no longer be updated.</sup></sub>
