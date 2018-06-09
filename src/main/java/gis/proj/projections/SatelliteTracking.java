@@ -204,13 +204,13 @@ public final class SatelliteTracking implements Space, Spherical {
                 lont =  StrictMath.atan(StrictMath.tan(lonp) * cosi);
                 L = lont - P2_div_P1 * lonp;
 
-                //        		if(NEAR_ZERO_RAD < (81 * DEG_TO_RAD) - StrictMath.abs(lat[i])) {
+                //                if(NEAR_ZERO_RAD < (81 * DEG_TO_RAD) - StrictMath.abs(lat[i])) {
                 x[i] = lon_M_lon0 * Rcoslat1;
                 y[i] = L * Rcoslat1_div_F1p;
-                //        		}
-                //        		else {
-                //        		    x[i] = y[i] = Double.NEGATIVE_INFINITY;
-                //        		}
+                //                }
+                //                else {
+                //                    x[i] = y[i] = Double.NEGATIVE_INFINITY;
+                //                }
             }
         }
         else {
