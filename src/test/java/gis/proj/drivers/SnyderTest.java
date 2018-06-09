@@ -99,7 +99,7 @@ public final class SnyderTest {
 
                 try {
                     Class<?> cls = Class.forName(sf.getProjection());
-                    proj = (Projection) cls.newInstance();
+                    proj = (Projection) cls.getConstructor().newInstance();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
