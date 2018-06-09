@@ -157,7 +157,7 @@ public final class Snyder {
         try {
             System.out.println("Loading projection: " + snyder.projStr);
             Class<?> cls = Class.forName(snyder.projStr);
-            proj = (Projection) cls.newInstance();
+            proj = (Projection) cls.getConstructor().newInstance();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
