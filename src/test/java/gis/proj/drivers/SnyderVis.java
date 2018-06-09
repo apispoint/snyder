@@ -680,7 +680,7 @@ public final class SnyderVis {
             try {
                 Class<?> cls = Class.forName(prj);
                 if(Projection.class.isAssignableFrom(cls) == true)
-                    projClasses.add((Projection) cls.newInstance());
+                    projClasses.add((Projection) cls.getConstructor().newInstance());
             } catch (Exception e) {
                 System.err.println("Unable to load projection: " + prj);
             }

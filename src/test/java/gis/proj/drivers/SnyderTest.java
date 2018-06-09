@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-*/
+ */
 package gis.proj.drivers;
 
 import gis.proj.Datum;
@@ -54,13 +54,13 @@ public final class SnyderTest {
 
     public static void main(String... args) {
         SnyderTest sfTest = new SnyderTest();
-    	JCommander jc = new JCommander(sfTest);
+        JCommander jc = new JCommander(sfTest);
 
         try {
-        	jc.parse(args);
+            jc.parse(args);
         } catch(Exception e) {
-        	jc.usage();
-        	System.exit(-10);
+            jc.usage();
+            System.exit(-10);
         }
 
         Snyder.printLicenseInformation("SnyderTest");
@@ -93,8 +93,8 @@ public final class SnyderTest {
 
                 for(Entry<String, String> entry : sf.getDatum().entrySet()) {
                     datum.setUserOverrideProperty(
-                    		entry.getKey(),
-                    		Snyder.parseDatumVal(entry.getValue().toLowerCase()));
+                            entry.getKey(),
+                            Snyder.parseDatumVal(entry.getValue().toLowerCase()));
                 }
 
                 try {
@@ -105,32 +105,32 @@ public final class SnyderTest {
                 }
 
                 fVal = proj.forward(
-                		new double[] { sf.getLon() * SnyderMath.DEG_TO_RAD },
-                		new double[] { sf.getLat() * SnyderMath.DEG_TO_RAD },
-                		ellip, datum);
+                        new double[] { sf.getLon() * SnyderMath.DEG_TO_RAD },
+                        new double[] { sf.getLat() * SnyderMath.DEG_TO_RAD },
+                        ellip, datum);
 
                 iVal = proj.inverse(
-                		new double[] { fVal[0][0] },
-                		new double[] { fVal[1][0] },
-                		ellip, datum);
+                        new double[] { fVal[0][0] },
+                        new double[] { fVal[1][0] },
+                        ellip, datum);
 
                 iVal[0][0] *= SnyderMath.RAD_TO_DEG;
                 iVal[1][0] *= SnyderMath.RAD_TO_DEG;
 
                 sf.setPassed(
-                		fVal[0][0], fVal[1][0],
-                		iVal[0][0], iVal[1][0]);
+                        fVal[0][0], fVal[1][0],
+                        iVal[0][0], iVal[1][0]);
             }
 
             try {
 
-            	if(sfTest.ofName != null)
-            		sfTest.om.writeValue(new File(sfTest.ofName), testData);
+                if(sfTest.ofName != null)
+                    sfTest.om.writeValue(new File(sfTest.ofName), testData);
 
             } catch(Exception e) {
                 System.out.println(
                         "Couldn't write the fiducial data results, of=" +
-                        sfTest.ofName);
+                                sfTest.ofName);
                 System.exit(-1);
             }
 
