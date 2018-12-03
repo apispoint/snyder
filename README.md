@@ -1,5 +1,5 @@
-Snyder Map Projection Implementation
-====================================
+Snyder Geospatial Projection System
+===================================
 
 Copyright (c) 2012-2017<br/>
 APIS Point, LLC
