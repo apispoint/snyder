@@ -1,7 +1,7 @@
 Snyder Geospatial Projection System
 ===================================
 
-Copyright (c) 2012-2017<br/>
+Copyright (c) 2012-2018<br/>
 APIS Point, LLC
 
 Description
@@ -31,7 +31,7 @@ Code Example
         Ellipsoid e = new Ellipsoid(6378137.0, 298.257223563);
 
         //
-        // Print all available parameters
+        // Print all available parameters (for reference only)
         //
         for(String prop : proj.getDatumProperties())
             System.out.println(prop);
