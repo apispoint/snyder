@@ -1,7 +1,7 @@
 Snyder Geospatial Projection System
 ===================================
 
-Copyright (c) 2012-2018<br/>
+Copyright (c) 2012-2019<br/>
 APIS Point, LLC
 
 Description
