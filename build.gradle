@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 archivesBaseName = 'ap.snyder'
-version = '3.0.2'
+version = '3.0.2019'
 
 jar {
     exclude 'gis/proj/drivers/**'
