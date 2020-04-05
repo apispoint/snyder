@@ -24,12 +24,10 @@ THE SOFTWARE.
 package gis.proj.drivers;
 
 import gis.proj.Datum;
-import gis.proj.drivers.Snyder;
 
 import java.io.File;
 import java.util.Map;
 import java.util.Set;
-
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
