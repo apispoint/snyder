@@ -15,8 +15,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.fasterxml.jackson.core:jackson-core:2+'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2+'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2+'
-    compile 'com.beust:jcommander:1+'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2+'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2+'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2+'
+    implementation 'com.beust:jcommander:1+'
 }
